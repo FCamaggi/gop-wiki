@@ -1,7 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import mermaid from 'mermaid';
+import { Card } from '../../../common/Card';
 
-const MermaidDiagram = ({ content }) => {
+export function MermaidDiagram({ content }) {
   const containerRef = useRef(null);
 
   useEffect(() => {
@@ -11,10 +12,10 @@ const MermaidDiagram = ({ content }) => {
       securityLevel: 'loose',
       themeVariables: {
         fontFamily: 'ui-sans-serif, system-ui, -apple-system, sans-serif',
-        fontSize: '14px'
-      }
+        fontSize: '14px',
+      },
     });
-    
+
     const renderDiagram = async () => {
       if (containerRef.current) {
         try {
@@ -24,9 +25,11 @@ const MermaidDiagram = ({ content }) => {
           containerRef.current.innerHTML = svg;
         } catch (error) {
           console.error('Error rendering mermaid diagram:', error);
-          containerRef.current.innerHTML = `<div class="text-red-500 p-4 rounded-lg border border-red-200">
-            Error rendering diagram
-          </div>`;
+          containerRef.current.innerHTML = `
+            <div class="text-red-500 p-4">
+              Error rendering diagram
+            </div>
+          `;
         }
       }
     };
@@ -34,11 +37,5 @@ const MermaidDiagram = ({ content }) => {
     renderDiagram();
   }, [content]);
 
-  return (
-    <div ref={containerRef} className="my-6 p-4 bg-white rounded-lg border border-slate-200 shadow-sm overflow-x-auto">
-      {/* Diagram will be rendered here */}
-    </div>
-  );
-};
-
-export default MermaidDiagram;
+  return <Card ref={containerRef} className="my-6 p-4 overflow-x-auto" />;
+}

@@ -1,134 +1,337 @@
-# Clase 8: MRP y Planificación de la Producción
+# Clase 8: MRP y Planificación Avanzada de Materiales
 
 ## 🎯 Introducción
 
-Imagina que estás construyendo una casa. No solo necesitas saber cuántos ladrillos, ventanas y puertas necesitas, sino también cuándo los necesitas y en qué orden. El MRP (Material Requirements Planning) funciona de manera similar: es como un plano detallado que nos dice qué materiales necesitamos, cuándo los necesitamos y en qué cantidades.
+Imagina dirigir una orquesta donde cada instrumento debe entrar exactamente en el momento preciso. Así funciona la planificación de materiales en manufactura: cada componente debe llegar en la cantidad exacta y en el momento justo para que la "sinfonía productiva" suene perfecta. El MRP (Material Requirements Planning) es el director de esta orquesta logística.
 
-### ¿Qué es MRP?
+### La Evolución de la Planificación de Materiales
 
-El MRP es un sistema de planificación y administración que ayuda a gestionar los procesos de manufactura determinando qué, cuánto y cuándo se necesitan los materiales.
+```mermaid
+timeline
+    title Evolución de Sistemas de Planificación
+    1960 : MRP
+         : Material Requirements Planning
+    1980 : MRP II
+         : Manufacturing Resource Planning
+    1990 : ERP
+         : Enterprise Resource Planning
+    2000 : APS
+         : Advanced Planning & Scheduling
+    2010 : S&OP
+         : Sales & Operations Planning
+    2020+ : Digital Supply Chain & Gemelo Digital
+```
 
-- Coordina la demanda con el suministro de materiales
-- Mantiene niveles apropiados de inventario
-- Planifica actividades de compra y producción
+> 💡 **Dato clave**: Un estudio de Gartner muestra que las empresas con sistemas MRP avanzados reducen su inventario en un 25-30% mientras mejoran el nivel de servicio en un 15-20%.
 
-> 💡 Dato importante: El MRP transforma el Plan Maestro de Producción en requerimientos detallados de materiales y componentes.
+## 📊 Framework Conceptual
 
-## 📊 Conceptos Principales
-
-### Estructura del MRP
+### 1. Los Tres Pilares del MRP
 
 ```mermaid
 graph TD
-    A[Plan Maestro<br/>de Producción] --> D[MRP]
-    B[Lista de Materiales<br/>BOM] --> D
-    C[Registro de<br/>Inventarios] --> D
-    D --> E[Plan de<br/>Requerimientos]
-    E --> F[Órdenes de Compra]
-    E --> G[Órdenes de Producción]
+    MPS[Plan Maestro<br>de Producción<br>¿Qué producir?] --> MRP
+    BOM[Lista de Materiales<br>¿Con qué materiales?] --> MRP
+    INV[Registro de<br>Inventarios<br>¿Qué tenemos?] --> MRP
+    MRP[MRP<br>Procesamiento] --> RPL[Plan de<br>Requerimientos<br>¿Qué ordenar?]
+    RPL --> PO[Órdenes de Compra]
+    RPL --> WO[Órdenes de Trabajo]
+    RPL --> SCH[Programación]
+
+    style MPS fill:#F9E79F,stroke:#333,stroke-width:1px
+    style BOM fill:#D7BDE2,stroke:#333,stroke-width:1px
+    style INV fill:#A3E4D7,stroke:#333,stroke-width:1px
+    style MRP fill:#F5B041,stroke:#333,stroke-width:2px
+    style RPL fill:#82E0AA,stroke:#333,stroke-width:1px
 ```
 
-### Lista de Materiales (BOM)
+### 2. Estructura BOM (Bill of Materials)
 
-La BOM es la receta que muestra la estructura jerárquica de los componentes:
+#### Tipos de BOM
+
+| Tipo de BOM       | Uso                     | Características               |
+| ----------------- | ----------------------- | ----------------------------- |
+| **Ingeniería**    | Diseño y documentación  | Enfocada en componentes       |
+| **Manufactura**   | Producción              | Incluye procesos y secuencias |
+| **Planificación** | MRP                     | Simplificada para cálculos    |
+| **Modular**       | Productos configurables | Estructura por módulos        |
+
+#### Representación Gráfica
 
 ```mermaid
 graph TD
-    A[Producto Final] --> B[Subensamble 1]
-    A --> C[Subensamble 2]
-    B --> D[Componente 1]
-    B --> E[Componente 2]
-    C --> F[Componente 3]
-    C --> G[Componente 4]
+    A[Bicicleta - Nivel 0] --> B[Marco - Nivel 1<br>1 Unid]
+    A --> C[Sistema de Transmisión - Nivel 1<br>1 Unid]
+    A --> D[Sistema de Dirección - Nivel 1<br>1 Unid]
+    A --> E[Sistema de Frenos - Nivel 1<br>1 Unid]
+    A --> F[Ruedas - Nivel 1<br>2 Unid]
+
+    C --> G[Pedales - Nivel 2<br>2 Unid]
+    C --> H[Cadena - Nivel 2<br>1 Unid]
+    C --> I[Platos - Nivel 2<br>1 Set]
+    C --> J[Piñones - Nivel 2<br>1 Set]
+
+    F --> K[Llanta - Nivel 2<br>1 Unid]
+    F --> L[Cámara - Nivel 2<br>1 Unid]
+    F --> M[Rayos - Nivel 2<br>36 Unid]
+    F --> N[Buje - Nivel 2<br>1 Unid]
 ```
 
-### Explosión de Materiales
+### 3. Cálculo MRP
 
-El proceso de calcular los requerimientos netos considerando:
+```mermaid
+flowchart TD
+    A[Demanda Bruta] --> B{Suficiente<br>Inventario?}
+    B -->|Sí| C[Satisfacer<br>con Inventario]
+    B -->|No| D[Calcular<br>Demanda Neta]
+    D --> E[Ajustar por<br>Tamaño de Lote]
+    E --> F[Programar Orden<br>considerando Lead Time]
+    F --> G[Generar Demanda<br>para Componentes]
+```
 
-- Demanda bruta
-- Inventario disponible
-- Recepciones programadas
-- Lead times
+## 🧮 Procesamiento Matemático del MRP
 
-## 💻 Herramientas y Recursos
+### 1. Fórmulas Fundamentales
 
-- Software ERP con módulos MRP
-- Hojas de cálculo para BOM
-- Sistemas de gestión de inventario
+$$Demanda\ Neta_t = \max(0, Demanda\ Bruta_t - Inventario_{t-1} - Recepciones\ Programadas_t)$$
 
-## 📈 Aplicaciones Prácticas
+$$Inventario_t = Inventario_{t-1} + Recepciones\ Programadas_t + Órdenes\ Planificadas_t - Demanda\ Bruta_t$$
 
-1. Planificación de Producción Automotriz
+$$Material\ Requerido = \sum_{i=1}^{n} Cantidad\ Padre_i \times Coeficiente\ Uso_{i,j}$$
 
-   - Gestión de miles de componentes
-   - Coordinación con proveedores
-   - Secuenciación de ensamblaje
+### 2. Técnicas de Dimensionamiento de Lote
 
-2. Fabricación de Electrodomésticos
-   - Control de inventarios
-   - Programación de producción
-   - Gestión de la cadena de suministro
+| Técnica                  | Descripción                        | Mejor Uso                                  |
+| ------------------------ | ---------------------------------- | ------------------------------------------ |
+| **Lote por Lote**        | Ordena exactamente la demanda neta | Items caros o perecederos                  |
+| **EOQ**                  | Lote económico fijo                | Demanda estable                            |
+| **POQ**                  | Períodos fijos, cantidad variable  | Balance entre setups y almacenamiento      |
+| **Cobertura de Período** | Ordena para cubrir N períodos      | Items con patrón estacional                |
+| **Wagner-Whitin**        | Optimización dinámica              | Cuando el costo computacional lo justifica |
 
-## 🎓 Ejercicio Práctico
+## 🏭 Casos de Implementación Chilenos
 
-### Cálculo de Requerimientos MRP
+### 1. MASISA (Industria Maderera)
 
-Producto: Mesa de escritorio
+**Desafío**: Gestionar +3,000 SKUs en múltiples plantas y mercados
 
-- Demanda: 100 unidades
-- Lead time: 1 semana
-- Inventario actual: 20 unidades
-- Tamaño de lote: 50 unidades
+**Solución MRP**:
 
-BOM por unidad:
+- BOM multinivel para diferentes líneas de tableros
+- Integración con pronósticos colaborativos de retail
+- Sistema de priorización dinámica ABC-XYZ
 
-- 4 patas
-- 1 tablero
-- 8 tornillos
-- 4 soportes
+**Resultados**:
 
-Calcular requerimientos netos:
+- -35% en roturas de stock
+- -18% en inventario de materias primas
+- +12% en cumplimiento de plan de producción
 
-1. Demanda neta = Demanda bruta - Inventario = 80 unidades
-2. Lotes a producir = ⌈80/50⌉ = 2 lotes
-3. Cantidad a producir = 100 unidades
-4. Requerimientos de materiales:
-   - Patas: 400 unidades
-   - Tableros: 100 unidades
-   - Tornillos: 800 unidades
-   - Soportes: 400 unidades
+### 2. Laboratorio Chile (Farmacéutica)
 
-## 🔑 Consejos Clave
+**Desafío**: Planificación compleja con fechas de caducidad y estrictas regulaciones
 
-1. Mantener datos precisos de inventario
-2. Actualizar la BOM regularmente
-3. Considerar lead times realistas
-4. Mantener comunicación con proveedores
+**Enfoque**:
 
-## 📝 Conclusión
+- MRP integrado con trazabilidad completa
+- Planificación inversa desde fechas de expiración
+- Gestión de restricciones GMP (Good Manufacturing Practices)
 
-El MRP es como el director de orquesta de la producción, asegurando que cada instrumento (material) esté disponible en el momento preciso para crear la sinfonía perfecta (producto final).
+**Impacto**:
 
-## 📚 Fórmulas Relevantes
+- -25% en pérdidas por caducidad
+- +20% en utilización de equipos críticos
+- Cumplimiento regulatorio 100%
 
-### Cálculo de Requerimientos
+## 💻 Implementación Técnica
 
-- Requerimientos Netos = Requerimientos Brutos - Inventario Disponible - Recepciones Programadas
-- Cantidad de Lotes = ⌈Requerimientos Netos/Tamaño de Lote⌉
+### 1. Tabla MRP Avanzada
 
-### Tiempos
+| Semana                      | 1   | 2   | 3   | 4   | 5   | 6   |
+| --------------------------- | --- | --- | --- | --- | --- | --- |
+| **Demanda Bruta**           | 0   | 100 | 50  | 150 | 100 | 50  |
+| **Recepciones Programadas** | 50  | 0   | 0   | 0   | 0   | 0   |
+| **Inventario Proyectado**   | 150 | 50  | 0   | 0   | 0   | 0   |
+| **Demanda Neta**            | 0   | 0   | 0   | 150 | 100 | 50  |
+| **Plan de Órdenes**         | 0   | 0   | 150 | 100 | 50  | 0   |
+| **Liberación de Órdenes**   | 150 | 100 | 50  | 0   | 0   | 0   |
 
-- Fecha Necesidad = Fecha Requerida - Lead Time
-- Lead Time Total = Σ Lead Times de cada nivel
+### 2. Código Python para Procesamiento MRP
 
-### Inventario
+```python
+import pandas as pd
+import numpy as np
 
-- Inventario Proyectado = Inventario Inicial + Recepciones Programadas - Requerimientos Brutos
-- Stock de Seguridad = z × σ × √LT
+def calcular_mrp(demanda_bruta, inv_inicial, recepciones_programadas,
+                 tamano_lote, lead_time, stock_seguridad=0):
+    """
+    Calcula tabla MRP para un ítem
+    """
+    periodos = len(demanda_bruta)
 
-## 🔍 Recursos Adicionales
+    # Crear DataFrame para resultados
+    mrp = pd.DataFrame(index=range(1, periodos+1))
+    mrp['Demanda_Bruta'] = demanda_bruta
+    mrp['Recepciones_Programadas'] = recepciones_programadas
 
-- Guías de implementación MRP
-- Software de planificación de producción
-- Casos de estudio de implementación exitosa
+    # Inventario proyectado y demanda neta
+    inv_proyectado = [0] * periodos
+    demanda_neta = [0] * periodos
+    plan_ordenes = [0] * periodos
+    liberacion_ordenes = [0] * periodos
+
+    # Primer período
+    inv_proyectado[0] = max(0, inv_inicial + recepciones_programadas[0] - demanda_bruta[0])
+    demanda_neta[0] = max(0, demanda_bruta[0] - inv_inicial - recepciones_programadas[0] + stock_seguridad)
+
+    if demanda_neta[0] > 0:
+        # Redondear al tamaño de lote superior
+        plan_ordenes[0] = np.ceil(demanda_neta[0] / tamano_lote) * tamano_lote
+
+    # Períodos restantes
+    for i in range(1, periodos):
+        inv_proyectado[i] = max(0, inv_proyectado[i-1] + recepciones_programadas[i] +
+                              plan_ordenes[i-lead_time] if i-lead_time >= 0 else 0 -
+                              demanda_bruta[i])
+
+        demanda_neta[i] = max(0, demanda_bruta[i] - inv_proyectado[i-1] -
+                             recepciones_programadas[i] + stock_seguridad)
+
+        if demanda_neta[i] > 0:
+            plan_ordenes[i] = np.ceil(demanda_neta[i] / tamano_lote) * tamano_lote
+
+        # Liberación de órdenes considerando lead time
+        if i + lead_time < periodos:
+            liberacion_ordenes[i] = plan_ordenes[i + lead_time]
+
+    # Completar DataFrame
+    mrp['Inventario_Proyectado'] = inv_proyectado
+    mrp['Demanda_Neta'] = demanda_neta
+    mrp['Plan_Ordenes'] = plan_ordenes
+    mrp['Liberacion_Ordenes'] = liberacion_ordenes
+
+    return mrp
+```
+
+### 3. Sistemas ERP con Funcionalidades MRP
+
+| Sistema                    | Características                     | Industria Objetivo       |
+| -------------------------- | ----------------------------------- | ------------------------ |
+| **SAP S/4HANA**            | Planificación multinivel avanzada   | Grandes empresas         |
+| **Oracle NetSuite**        | MRP en la nube                      | Medianas empresas        |
+| **Microsoft Dynamics 365** | Integración con Power BI            | Manufactura discreta     |
+| **Odoo**                   | Open source, modular                | PyMEs                    |
+| **TOTVS Protheus**         | Adaptado al mercado latinoamericano | Industrial y manufactura |
+
+## 🔄 MRP II y Planificación Avanzada
+
+### 1. Del MRP al MRP II
+
+```mermaid
+graph TD
+    A[MRP<br>Materiales] --> B[MRP II]
+    C[Capacidad] --> B
+    D[Finanzas] --> B
+    E[RRHH] --> B
+
+    B --> F[Plan Maestro]
+    B --> G[Plan Capacidad]
+    B --> H[Plan Materiales]
+    B --> I[Plan Recursos]
+```
+
+### 2. Planificación Avanzada APS
+
+**Características**:
+
+- Optimización multi-objetivo
+- Planificación basada en restricciones
+- Simulación de escenarios
+- Algoritmos avanzados (heurísticas, programación matemática)
+
+## 📋 Taller Práctico: Bicicleta Mountain Bike
+
+### 1. BOM Simplificada
+
+- **Nivel 0**: Bicicleta MTB (1 unidad)
+  - **Nivel 1**: Marco (1), Horquilla (1), Manillar (1), Grupo Transmisión (1), Juego Ruedas (1)
+    - **Nivel 2**: (De Grupo Transmisión) Cassette (1), Platos (1), Cadena (1), Cambios (2)
+    - **Nivel 2**: (De Juego Ruedas) Rueda Delantera (1), Rueda Trasera (1)
+      - **Nivel 3**: (De cada Rueda) Llanta (1), Buje (1), Rayos (36), Neumático (1)
+
+### 2. Plan Maestro
+
+- Plan de producción: 500 bicicletas/mes
+- Distribución semanal: [100, 150, 150, 100]
+
+### 3. Cálculo de Necesidades
+
+**Para Cuadros**:
+
+- Tiempo de entrega: 4 semanas
+- Stock inicial: 200 unidades
+- Tamaño de lote: 300 unidades
+
+**Tabla MRP resultante**:
+
+- Semana 1: Liberación de orden de 300 cuadros
+- Semana 5: Recepción de 300 cuadros
+
+## 📊 Dashboard MRP
+
+### KPIs Clave
+
+```mermaid
+graph LR
+    A[KPIs MRP] --> B[Adherencia al Plan<br>95%]
+    A --> C[Rotación<br>12.5]
+    A --> D[Disponibilidad<br>98.5%]
+    A --> E[Lead Time<br>21 días]
+    A --> F[Setup Time<br>45 min]
+```
+
+## 🔍 Buenas Prácticas y Lecciones Aprendidas
+
+1. **Calidad de Datos**
+
+   - Precisión de BOM >99%
+   - Exactitud de inventario >98%
+   - Lead times actualizados mensualmente
+
+2. **Organización**
+
+   - Equipo cross-funcional para parametrización
+   - Responsabilidades claras para mantenimiento
+   - Ciclo formalizado de actualización de datos
+
+3. **Tecnología**
+   - Integración con códigos de barras/RFID
+   - Alertas automatizadas por excepción
+   - Visualización en tiempo real
+
+## 📚 Recursos Ampliados
+
+- **Libros**:
+  - "Factory Physics" por Hopp & Spearman
+  - "MRP & Beyond" por Carol Ptak
+- **Herramientas**:
+  - MRPeasy (versión estudiante)
+  - SAP Demo System con módulo MM/PP
+  - Plantilla Excel avanzada con Visual Basic (disponible en Canvas)
+
+## 🔑 Claves para el Examen
+
+1. **Conceptos Críticos**:
+
+   - Explosión de materiales
+   - Órdenes planificadas vs. programadas
+   - Offset por lead time
+   - Niveles BOM
+
+2. **Ejercicios Típicos**:
+   - Cálculo completo de MRP
+   - Dimensionamiento de lotes
+   - Análisis de impacto de cambios en BOM
+   - Detección de problemas en datos de entrada
+
+> 💡 **Consejo final**: "El MRP es como un GPS para la producción: su éxito depende tanto de la calidad de los datos de entrada como del algoritmo que use para calcular la ruta"

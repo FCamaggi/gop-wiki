@@ -1,137 +1,345 @@
-# Clase 5: Pronósticos - Métodos Avanzados y Series de Tiempo
+# Clase 5: Pronósticos - Métodos Avanzados y Series Temporales
 
-## 🎯 Introducción
+## 🌊 Profundizando en Pronósticos
 
-Continuando con nuestra analogía del capitán del barco, ahora nos adentramos en aguas más profundas. Si en la sesión anterior aprendimos a usar una brújula básica (regresión simple), ahora exploraremos el uso de instrumentos más sofisticados como el radar y los sistemas de navegación satelital (métodos avanzados de pronóstico).
+Si en la sesión anterior establecimos las bases conceptuales y exploramos la regresión lineal simple, ahora nos sumergiremos en técnicas más sofisticadas que nos permitirán capturar patrones complejos en los datos. Estas técnicas son esenciales cuando enfrentamos series temporales con estacionalidad, tendencias no lineales o múltiples variables predictoras.
 
-### ¿Qué son los métodos avanzados de pronóstico?
+> 💡 **Insight clave**: Los métodos avanzados pueden reducir el error de pronóstico entre un 20-40% comparado con métodos simples cuando los datos presentan patrones complejos.
 
-Son técnicas más sofisticadas que consideran múltiples variables y patrones complejos para generar predicciones más precisas.
+## 🧮 Series Temporales y sus Componentes
 
-- Manejan múltiples variables simultáneamente
-- Incorporan patrones estacionales y tendencias
-- Utilizan técnicas estadísticas más robustas
-
-> 💡 Dato importante: Los métodos avanzados son más precisos pero requieren más datos y comprensión técnica.
-
-## 📊 Conceptos Principales
-
-### Regresión Múltiple
-
-La regresión múltiple expande el modelo simple para incluir múltiples variables predictoras:
-
-$$ y = \alpha + \beta_1x_1 + \beta_2x_2 + ... + \beta_nx_n + \epsilon $$
+Una serie temporal puede descomponerse en componentes fundamentales que nos ayudan a entender su comportamiento:
 
 ```mermaid
-graph LR
-    X1[Variable X1] --> Y[Variable Y]
-    X2[Variable X2] --> Y
-    X3[Variable X3] --> Y
-    Xn[Variable Xn] --> Y
+flowchart LR
+    A[Serie Original] --> B[Descomposición]
+    B --> C[Tendencia]
+    B --> D[Estacionalidad]
+    B --> E[Ciclo]
+    B --> F[Residual]
+    C --> G[Modelo\nCompuesto]
+    D --> G
+    E --> G
+    F --> G
+    G --> H[Pronóstico]
 ```
 
-### Métodos de Suavización
+### Patrones de Series Temporales en Contextos Empresariales
 
-#### Suavización Exponencial Simple
+| Patrón         | Ejemplo Empresarial                             | Método Recomendado |
+| -------------- | ----------------------------------------------- | ------------------ |
+| **Estacional** | Ventas de helados en verano                     | Winters, SARIMA    |
+| **Tendencia**  | Crecimiento continuo de e-commerce              | Holt, Regresión    |
+| **Cíclico**    | Ventas de materiales construcción               | ARIMA, Prophet     |
+| **Combinado**  | Ventas minoristas (↑ tendencia + pico navideño) | Holt-Winters       |
+| **Irregular**  | Venta de artículos de lujo                      | Medias móviles     |
 
-$$ F\_{t+1} = \alpha Y_t + (1-\alpha)F_t $$
+## 🔬 Métodos Avanzados en Detalle
 
-#### Suavización Exponencial con Tendencia (Holt)
+### 1. Regresión Múltiple en Contexto
 
-$$ L*t = \alpha Y_t + (1-\alpha)(L*{t-1} + T*{t-1}) $$
-$$ T_t = \beta(L_t - L*{t-1}) + (1-\beta)T\_{t-1} $$
+La regresión múltiple va más allá de una simple relación lineal, permitiendo modelar efectos combinados.
 
-#### Suavización Exponencial con Tendencia y Estacionalidad (Winters)
+```python
+# Ejemplo en Python
+import statsmodels.api as sm
 
-$$ L*t = \alpha\frac{Y_t}{S*{t-s}} + (1-\alpha)(L*{t-1} + T*{t-1}) $$
-$$ T*t = \beta(L_t - L*{t-1}) + (1-\beta)T*{t-1} $$
-$$ S_t = \gamma\frac{Y_t}{L_t} + (1-\gamma)S*{t-s} $$
+# Variables explicativas: precio, publicidad, índice económico
+X = df[['precio', 'publicidad', 'indice_economico']]
+X = sm.add_constant(X)  # Añadir término constante
+y = df['ventas']
+
+# Ajustar modelo
+model = sm.OLS(y, X).fit()
+print(model.summary())
+
+# Predicción para nuevos valores
+nuevos_datos = [[1, 120, 3500, 102]]  # Constante, precio, publicidad, índice
+prediccion = model.predict(nuevos_datos)
+```
+
+#### Interpretación de Coeficientes
+
+| Variable             | Coeficiente | Interpretación                                        |
+| -------------------- | ----------- | ----------------------------------------------------- |
+| **Precio**           | -2.5        | Por cada $1 de aumento, ventas bajan en 2.5 unidades  |
+| **Publicidad**       | 0.03        | Por cada $1 invertido, ventas suben 0.03 unidades     |
+| **Índice Económico** | 12.6        | Por cada punto del índice, ventas suben 12.6 unidades |
+
+### 2. Métodos de Suavización Exponencial
+
+#### 2.1 Suavización Exponencial Simple (SES)
+
+Ideal para series **sin tendencia ni estacionalidad** pero con fluctuaciones.
+
+$$F_{t+1} = \alpha Y_t + (1-\alpha)F_t$$
+
+```R
+# Ejemplo en R
+library(forecast)
+modelo_ses <- ets(serie_datos, model="ANN")  # A=aditivo, N=sin tendencia, N=sin estacionalidad
+pronostico <- forecast(modelo_ses, h=12)  # 12 períodos adelante
+plot(pronostico)
+```
+
+**Selección de α**:
+
+- α cercano a 1: Alta respuesta a cambios recientes
+- α cercano a 0: Mayor estabilidad, menor respuesta
+
+#### 2.2 Método de Holt
+
+Para series **con tendencia pero sin estacionalidad**.
+
+$$
+\begin{align}
+L_t &= \alpha Y_t + (1-\alpha)(L_{t-1} + T_{t-1}) \\
+T_t &= \beta(L_t - L_{t-1}) + (1-\beta)T_{t-1} \\
+F_{t+h} &= L_t + h \times T_t
+\end{align}
+$$
+
+**Parámetros clave**:
+
+- α: Peso del nivel actual
+- β: Peso de la tendencia
+
+#### 2.3 Método Holt-Winters
+
+Para series **con tendencia y estacionalidad**.
 
 ```mermaid
 graph TD
-    A[Datos de Serie Temporal] --> B[Suavización Simple]
-    A --> C[Método de Holt]
-    A --> D[Método de Winters]
-    B --> E[Sin Tendencia<br/>Sin Estacionalidad]
-    C --> F[Con Tendencia<br/>Sin Estacionalidad]
-    D --> G[Con Tendencia<br/>Con Estacionalidad]
+    A[Holt-Winters] --> B{Tipo de<br>Estacionalidad}
+    B -->|Aditiva| C[Y = Nivel + Tendencia + Estacionalidad]
+    B -->|Multiplicativa| D[Y = Nivel × Tendencia × Estacionalidad]
 ```
 
-## 💻 Herramientas y Recursos
+**Ecuaciones Multiplicativas**:
 
-- Software especializado: SPSS, SAS
-- Paquetes avanzados en R: forecast, prophet
-- Bibliotecas de Python: statsmodels, pmdarima
+$$
+\begin{align}
+L_t &= \alpha \frac{Y_t}{S_{t-s}} + (1-\alpha)(L_{t-1} + T_{t-1}) \\
+T_t &= \beta(L_t - L_{t-1}) + (1-\beta)T_{t-1} \\
+S_t &= \gamma \frac{Y_t}{L_t} + (1-\gamma)S_{t-s} \\
+F_{t+h} &= (L_t + h \times T_t) \times S_{t-s+h\bmod s}
+\end{align}
+$$
 
-## 📈 Aplicaciones Prácticas
+Donde:
 
-1. Pronóstico de Demanda Estacional
+- s = longitud del ciclo estacional
+- γ = parámetro de suavización estacional
 
-   - Ventas navideñas
-   - Consumo de energía
-   - Ocupación hotelera
+## 🔄 Modelos ARIMA
 
-2. Análisis de Múltiples Factores
-   - Ventas considerando precio, publicidad y competencia
-   - Demanda considerando clima, eventos y economía
-   - Producción considerando materias primas y mano de obra
+### Componentes Fundamentales
 
-## 🎓 Ejercicio Práctico
+- **AR (Autorregresivo)**: La observación actual es función de observaciones pasadas
+- **I (Integrado)**: Diferenciación para estabilizar la serie
+- **MA (Medias Móviles)**: La observación actual es función de errores de predicción pasados
 
-### Pronóstico con Suavización Exponencial
+```mermaid
+graph LR
+    A[ARIMA] --> B[p: Orden AR]
+    A --> C[d: Grado de diferenciación]
+    A --> D[q: Orden MA]
+    A --> E[ARIMA(p,d,q)]
+```
 
-Datos trimestrales de ventas:
-| Trimestre | Ventas |
-|-----------|--------|
-| 1 | 100 |
-| 2 | 120 |
-| 3 | 90 |
-| 4 | 140 |
+### Metodología Box-Jenkins
 
-Para α = 0.2:
+1. **Identificación**: Análisis de ACF/PACF, tests de estacionariedad
+2. **Estimación**: Ajuste de parámetros
+3. **Diagnóstico**: Análisis de residuos
+4. **Pronóstico**: Generación de predicciones
 
-1. F₁ = Y₁ = 100
-2. F₂ = 0.2(120) + 0.8(100) = 104
-3. F₃ = 0.2(90) + 0.8(104) = 101.2
-4. F₄ = 0.2(140) + 0.8(101.2) = 108.96
+```python
+# Ejemplo con SARIMA en Python (estacional)
+from statsmodels.tsa.statespace.sarimax import SARIMAX
 
-## 🔑 Consejos Clave
+# SARIMA(1,1,1)x(1,1,1,12) - orden estacional para datos mensuales
+model = SARIMAX(data, order=(1,1,1), seasonal_order=(1,1,1,12))
+results = model.fit()
+forecast = results.forecast(steps=24)  # pronóstico para 24 períodos
+```
 
-1. Seleccionar el método según el patrón de los datos
-2. Validar el modelo con datos de prueba
-3. Mantener el equilibrio entre complejidad y precisión
-4. Considerar el costo-beneficio del método elegido
+## 📱 Modelos Modernos
 
-## 📝 Conclusión
+### 1. Prophet (Meta/Facebook)
 
-Los métodos avanzados de pronóstico son como un conjunto completo de instrumentos de navegación: cada uno tiene su propósito específico y, cuando se usan en conjunto, proporcionan una visión más completa y precisa del futuro.
+Especialmente diseñado para:
 
-## 📚 Fórmulas Relevantes
+- Series con múltiples estacionalidades
+- Datos faltantes
+- Cambios en tendencias
+- Efectos de días festivos
 
-### Regresión Múltiple
+```python
+# Implementación en Python
+from prophet import Prophet
 
-- Modelo: $y = \alpha + \beta_1x_1 + \beta_2x_2 + ... + \beta_nx_n + \epsilon$
-- R² ajustado: $R^2_{adj} = 1 - \frac{(1-R^2)(n-1)}{n-k-1}$
+# Preparar datos en formato correcto
+df = pd.DataFrame({'ds': fechas, 'y': valores})
 
-### Suavización Exponencial
+# Ajustar modelo
+model = Prophet(
+    seasonality_mode='multiplicative',
+    changepoint_prior_scale=0.05
+)
+model.add_country_holidays(country_name='Chile')
+model.fit(df)
 
-- Simple: $F_{t+1} = \alpha Y_t + (1-\alpha)F_t$
-- Holt:
-  - Nivel: $L_t = \alpha Y_t + (1-\alpha)(L_{t-1} + T_{t-1})$
-  - Tendencia: $T_t = \beta(L_t - L_{t-1}) + (1-\beta)T_{t-1}$
-- Winters:
-  - Nivel: $L_t = \alpha\frac{Y_t}{S_{t-s}} + (1-\alpha)(L_{t-1} + T_{t-1})$
-  - Tendencia: $T_t = \beta(L_t - L_{t-1}) + (1-\beta)T_{t-1}$
-  - Estacionalidad: $S_t = \gamma\frac{Y_t}{L_t} + (1-\gamma)S_{t-s}$
+# Generar pronóstico
+future = model.make_future_dataframe(periods=90)
+forecast = model.predict(future)
 
-### Medidas de Precisión
+# Visualizar componentes
+fig = model.plot_components(forecast)
+```
 
-- R² múltiple: $R^2 = 1 - \frac{SSE}{SST}$
-- AIC: $AIC = 2k - 2\ln(L)$
-- BIC: $BIC = \ln(n)k - 2\ln(L)$
+### 2. Redes Neuronales LSTM
 
-## 🔍 Recursos Adicionales
+Ideales para:
 
-- Artículos académicos sobre pronósticos avanzados
-- Casos de estudio de implementaciones exitosas
-- Tutoriales de software especializado
+- Patrones no lineales complejos
+- Series muy largas con dependencias temporales extensas
+- Incorporación de variables exógenas
+
+## 🎮 Caso Práctico: Demanda Estacional
+
+### Escenario: Cadena Retail
+
+**Datos**:
+
+- Ventas mensuales históricas (3 años)
+- Estacionalidad marcada (peak navideño)
+- Tendencia creciente
+
+### Enfoque Paso a Paso:
+
+1. **Visualización y Descomposición**:
+
+   ```python
+   from statsmodels.tsa.seasonal import seasonal_decompose
+
+   result = seasonal_decompose(df['ventas'], model='multiplicative')
+   result.plot()
+   ```
+
+2. **Evaluación de Métodos**:
+
+   | Método       | MAE   | MAPE  | Mejor uso                         |
+   | ------------ | ----- | ----- | --------------------------------- |
+   | SES          | 5,420 | 18.5% | Corto plazo, baja complejidad     |
+   | Holt         | 4,230 | 14.8% | Corto plazo con tendencia         |
+   | Holt-Winters | 2,850 | 9.7%  | Mediano plazo con estacionalidad  |
+   | SARIMA       | 2,710 | 9.2%  | Mediano plazo, patrones complejos |
+   | Prophet      | 2,380 | 8.1%  | Largo plazo, múltiples patrones   |
+
+3. **Implementación de Holt-Winters**:
+
+   ```R
+   # En R
+   library(forecast)
+
+   modelo_hw <- ets(ventas, model="MAM")  # Multiplicativo, Aditivo, Multiplicativo
+   pronostico <- forecast(modelo_hw, h=12)
+
+   # Intervalos de predicción
+   plot(pronostico)
+   ```
+
+4. **Validación Cruzada Temporal**:
+
+   ```python
+   from sklearn.model_selection import TimeSeriesSplit
+
+   tscv = TimeSeriesSplit(n_splits=5)
+   for train_index, test_index in tscv.split(data):
+       # Entrenar modelo con train_index
+       # Evaluar en test_index
+   ```
+
+## 🌐 Aplicaciones Sectoriales
+
+### 1. Retail
+
+- **Desafío**: Múltiples productos con diferentes patrones
+- **Enfoque**: Agrupamiento y jerarquización de pronósticos
+- **Método**: Combinación de métodos bottom-up y top-down
+
+### 2. Servicios Financieros
+
+- **Desafío**: Alta volatilidad y eventos externos
+- **Enfoque**: Modelos ARCH/GARCH para volatilidad
+- **Método**: Incorporación de variables macroeconómicas
+
+### 3. Energía
+
+- **Desafío**: Patrones diarios, semanales y estacionales
+- **Enfoque**: Pronóstico a múltiples horizontes
+- **Método**: Redes neuronales con variables meteorológicas
+
+## 🎯 Criterios de Selección de Método
+
+```mermaid
+flowchart TB
+    A[¿Qué método usar?] --> B{Cantidad de datos}
+    B -->|Pocos| C[Métodos simples:<br>Promedios, SES]
+    B -->|Muchos| D{¿Patrón estacional?}
+    D -->|No| E{¿Tendencia?}
+    D -->|Sí| F{¿Múltiples estacionalidades?}
+    E -->|No| G[SES]
+    E -->|Sí| H[Holt]
+    F -->|No| I[Holt-Winters]
+    F -->|Sí| J[SARIMA, Prophet]
+```
+
+## 📊 Evaluación Avanzada de Pronósticos
+
+Más allá de las métricas básicas como MAE y MAPE:
+
+| Métrica          | Fórmula                                                                               | Ventaja                                    |
+| ---------------- | ------------------------------------------------------------------------------------- | ------------------------------------------ |
+| **RMSSE**        | $\sqrt{\frac{\sum(y_t - \hat{y}_t)^2 / n}{\sum(y_t - y_{t-1})^2 / (n-1)}}$            | Escala invariante, comparable entre series |
+| **MASE**         | $\frac{1}{n}\sum\|\frac{y_t - \hat{y}_t}{\frac{1}{n-1}\sum\|y_t - y_{t-1}\|}\|$       | Robusta a outliers                         |
+| **Pinball Loss** | $\sum_{\tau \in Q} \tau \cdot \max(y-\hat{y}, 0) + (1-\tau) \cdot \max(\hat{y}-y, 0)$ | Para pronósticos por cuantiles             |
+
+## 🤝 Integración con Sistemas Empresariales
+
+### 1. Workflow de Pronósticos en la Organización
+
+```mermaid
+graph LR
+    A[Recopilación Datos] --> B[Limpieza/Preparación]
+    B --> C[Modelamiento]
+    C --> D[Validación]
+    D --> E[Implementación]
+    E --> F[Monitoreo]
+    F -.-> A
+```
+
+### 2. Del Pronóstico a la Acción
+
+| Área            | Uso del Pronóstico          | Impacto Empresarial          |
+| --------------- | --------------------------- | ---------------------------- |
+| **Operaciones** | Planificación de capacidad  | -15% costos operativos       |
+| **Compras**     | Optimización de inventarios | +20% rotación inventario     |
+| **Finanzas**    | Proyección de flujo de caja | +5% precisión presupuestaria |
+| **Marketing**   | Evaluación de campañas      | +12% ROI publicitario        |
+
+## 📝 Reflexiones para el Examen
+
+1. **Aspectos críticos**:
+
+   - La precisión no es el único criterio (considera interpretabilidad, mantenibilidad)
+   - Los pronósticos deben revisarse y ajustarse periódicamente
+   - El juicio experto sigue siendo valioso incluso con métodos sofisticados
+
+2. **Preguntas típicas**:
+   - Selección del método adecuado según características de la serie
+   - Interpretación de parámetros (α, β, γ en métodos de suavización)
+   - Análisis de impacto de decisiones basadas en pronósticos
+
+> 💡 **Consejo práctico**: "Un buen pronóstico no es el que intenta predecir exactamente el futuro, sino el que proporciona la información necesaria para tomar mejores decisiones hoy"

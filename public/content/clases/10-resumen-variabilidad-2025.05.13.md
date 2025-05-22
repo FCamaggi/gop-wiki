@@ -1,149 +1,426 @@
-# Clase 10: Variabilidad - Cartas de Control y SPC
+# Clase 10: Control Estadístico de Procesos (SPC) - Implementación Avanzada
 
-## 🎯 Introducción
+## 🎯 Control Estadístico como Ventaja Competitiva
 
-Siguiendo con nuestra analogía de la fábrica de chocolate, ahora nos centraremos en las herramientas que nos permiten "monitorear la receta". Las cartas de control son como el termómetro y la báscula de precisión que nos ayudan a mantener el proceso bajo control, asegurando que cada chocolate mantenga la calidad deseada.
+Continuando con nuestra exploración de la variabilidad, en esta segunda sesión nos centraremos en la implementación práctica del Control Estadístico de Procesos (SPC) como herramienta estratégica. Como decía Deming, "si no puedes describir lo que haces como un proceso, no sabes lo que estás haciendo". Hoy aprenderemos a implementar sistemas que transforman datos en decisiones operativas de alto impacto.
 
-### ¿Qué son las Cartas de Control?
+> 💡 **Dato revelador**: Un estudio de McKinsey encontró que las empresas que implementan control estadístico de procesos efectivo reducen sus costos de calidad hasta en un 30% y aumentan su productividad en un 15-20%.
 
-Las cartas de control son herramientas gráficas que permiten distinguir entre variación natural y especial en un proceso, monitoreando su comportamiento a lo largo del tiempo.
+### Principales Beneficios del SPC Avanzado
 
-- Visualizan tendencias y patrones
-- Identifican causas especiales
-- Documentan el desempeño del proceso
-- Facilitan la toma de decisiones
+| Beneficio                           | Impacto Cuantificable | Ejemplo en Industria Chilena                                     |
+| ----------------------------------- | --------------------- | ---------------------------------------------------------------- |
+| **Reducción de desperdicios**       | 15-25%                | Viña Concha y Toro: 22% menos mermas en embotellado              |
+| **Mejora de productividad**         | 10-30%                | Nestlé Chile: 18% más producción en mismas horas                 |
+| **Reducción de garantías/reclamos** | 30-60%                | CSAV: 45% menos reclamos por daños de carga                      |
+| **Ahorro energético**               | 5-15%                 | ENAP: 8% menor consumo energético en refinerías                  |
+| **Reducción de tiempo de ciclo**    | 10-40%                | Cencosud: 25% menor tiempo de proceso en centros de distribución |
 
-> 💡 Dato importante: Las cartas de control fueron desarrolladas por Walter Shewhart y son fundamentales en el Control Estadístico de Procesos (SPC).
-
-## 📊 Conceptos Principales
-
-### Tipos de Cartas de Control
-
-```mermaid
-graph TD
-    A[Cartas de Control] --> B[Variables]
-    A --> C[Atributos]
-    B --> D[X-R]
-    B --> E[X-S]
-    C --> F[p]
-    C --> G[np]
-    C --> H[c]
-    C --> I[u]
-```
-
-### Patrones en Cartas de Control
+## 📊 Arquitectura de un Sistema SPC Moderno
 
 ```mermaid
 graph TD
-    A[Patrones] --> B[Tendencias]
-    A --> C[Ciclos]
-    A --> D[Cambios Nivel]
-    A --> E[Puntos Fuera]
-    B --> F[Causas<br/>Especiales]
-    C --> F
-    D --> F
-    E --> F
+    A[Sistema SPC Avanzado] --> B[Captura de Datos]
+    A --> C[Análisis Estadístico]
+    A --> D[Visualización]
+    A --> E[Respuesta]
+
+    B --> B1[IoT / Sensores]
+    B --> B2[Integración MES/SCADA]
+    B --> B3[Captura manual digital]
+
+    C --> C1[Análisis en tiempo real]
+    C --> C2[Detección automática<br>de patrones]
+    C --> C3[Machine learning]
+
+    D --> D1[Dashboards dinámicos]
+    D --> D2[Alertas configurables]
+    D --> D3[Informes automatizados]
+
+    E --> E1[Protocolos de respuesta]
+    E --> E2[Ajustes automáticos]
+    E --> E3[Ciclos de mejora]
 ```
+
+### Modelo de Madurez SPC en Empresas Chilenas
+
+| Nivel                   | Descripción                        | Características                                                | Empresas Ejemplo                        |
+| ----------------------- | ---------------------------------- | -------------------------------------------------------------- | --------------------------------------- |
+| **Nivel 1: Reactivo**   | Inspección y solución de problemas | Control de calidad mediante inspección, sin enfoque preventivo | PyMEs manufactureras                    |
+| **Nivel 2: Preventivo** | Implementación básica de SPC       | Cartas de control manuales o semi-automatizadas                | Laboratorios Bagó, CCU                  |
+| **Nivel 3: Predictivo** | SPC integrado con sistemas         | Análisis avanzado, predicción de tendencias                    | CMPC, Codelco                           |
+| **Nivel 4: Adaptativo** | SPC con machine learning           | Sistemas auto-adaptativos, optimización continua               | Compañía Minera Doña Inés de Collahuasi |
+
+## 🔍 Sistema de Cartas de Control
+
+### Anatomía de una Carta de Control
+
+```
+UCL (Límite Superior) ------ ┌─────────────────────────────────┐
+                             │                                 │
+                             │                                 │
+                             │                                 │
+                             │           Zona A (+3σ)          │
+                             │                                 │
+                             │           Zona B (+2σ)          │
+                             │                                 │
+Línea Central -------------- │           Zona C (+1σ)          │
+                             │                                 │
+                             │           Zona C (-1σ)          │
+                             │                                 │
+                             │           Zona B (-2σ)          │
+                             │                                 │
+                             │           Zona A (-3σ)          │
+                             │                                 │
+LCL (Límite Inferior) ------ └─────────────────────────────────┘
+                               1  2  3  4  5  6  ...  n
+                                 Número de Muestra
+```
+
+### Taxonomía Completa de Cartas de Control
+
+```mermaid
+graph TD
+    A[Cartas de Control] --> B[Variables<br>Datos Continuos]
+    A --> C[Atributos<br>Datos Discretos]
+
+    B --> D[Subgrupos]
+    B --> E[Individuales]
+
+    D --> F[X-R<br>Subgrupos pequeños]
+    D --> G[X-S<br>Subgrupos grandes]
+    E --> H[I-MR<br>Mediciones individuales]
+
+    C --> I[Binomiales<br>Pasa/No Pasa]
+    C --> J[Poisson<br>Conteo de defectos]
+
+    I --> K[p<br>Proporción]
+    I --> L[np<br>Número de defectuosos]
+
+    J --> M[c<br>Defectos por unidad fija]
+    J --> N[u<br>Defectos por unidad variable]
+```
+
+### Selección de la Carta Adecuada
+
+| Tipo de Dato | Tamaño de Subgrupo | Tipo de Muestra     | Carta Recomendada |
+| ------------ | ------------------ | ------------------- | ----------------- |
+| **Continuo** | n = 1              | Individual          | I-MR              |
+| **Continuo** | 2 ≤ n ≤ 10         | Subgrupo            | X-R               |
+| **Continuo** | n > 10             | Subgrupo            | X-S               |
+| **Discreto** | Variable           | Proporción          | p                 |
+| **Discreto** | Constante          | Número defectuosos  | np                |
+| **Discreto** | Constante          | Número defectos     | c                 |
+| **Discreto** | Variable           | Defectos por unidad | u                 |
+
+## 📏 Fórmulas Fundamentales
+
+### 1. Cartas para Variables - X-R
+
+$$
+\begin{align*}
+UCL_{\bar{X}} &= \bar{\bar{X}} + A_2\bar{R} \\
+CL_{\bar{X}} &= \bar{\bar{X}} \\
+LCL_{\bar{X}} &= \bar{\bar{X}} - A_2\bar{R} \\
+\\
+UCL_R &= D_4\bar{R} \\
+CL_R &= \bar{R} \\
+LCL_R &= D_3\bar{R}
+\end{align*}
+$$
+
+### 2. Cartas para Variables - X-S
+
+$$
+\begin{align*}
+UCL_{\bar{X}} &= \bar{\bar{X}} + A_3\bar{S} \\
+CL_{\bar{X}} &= \bar{\bar{X}} \\
+LCL_{\bar{X}} &= \bar{\bar{X}} - A_3\bar{S} \\
+\\
+UCL_S &= B_4\bar{S} \\
+CL_S &= \bar{S} \\
+LCL_S &= B_3\bar{S}
+\end{align*}
+$$
+
+### 3. Cartas para Atributos - p
+
+$$
+\begin{align*}
+UCL_p &= \bar{p} + 3\sqrt{\frac{\bar{p}(1-\bar{p})}{n}} \\
+CL_p &= \bar{p} \\
+LCL_p &= \bar{p} - 3\sqrt{\frac{\bar{p}(1-\bar{p})}{n}}
+\end{align*}
+$$
+
+## 🧠 Reglas de Detección de Patrones
 
 ### Reglas de Western Electric
 
+1. **Un punto fuera de los límites de control (±3σ)**
+2. **Dos de tres puntos consecutivos en Zona A o más allá (±2σ)**
+3. **Cuatro de cinco puntos consecutivos en Zona B o más allá (±1σ)**
+4. **Ocho puntos consecutivos en el mismo lado de la línea central**
+
+### Patrones Adicionales (Reglas de Nelson)
+
+5. **Seis puntos consecutivos en tendencia ascendente o descendente**
+6. **Quince puntos consecutivos en Zona C (±1σ)**
+7. **Catorce puntos consecutivos alternando arriba/abajo**
+8. **Ocho puntos consecutivos a ambos lados de la línea central pero ninguno en Zona C**
+
 ```mermaid
-graph LR
-    A[Reglas] --> B[Zona A]
-    A --> C[Zona B]
-    A --> D[Zona C]
-    B --> E[±3σ]
-    C --> F[±2σ]
-    D --> G[±1σ]
+graph TD
+    A[Detección de Patrón] --> B{¿Causa Especial?}
+    B -->|Sí| C[Investigar Causas]
+    C --> D[Implementar Acción Correctiva]
+    D --> E[Documentar]
+    E --> F[Verificar Efectividad]
+    B -->|No| G[Mantener Monitoreo]
 ```
 
-## 💻 Herramientas y Recursos
+## 🏭 Casos de Aplicación Industrial Avanzada
 
-- Software SPC especializado
-- Calculadoras de límites de control
-- Plantillas de cartas de control
-- Herramientas de análisis estadístico
+### 1. Industria Minera - Collahuasi
 
-## 📈 Aplicaciones Prácticas
+**Desafío**: Optimización multiparamétrica de proceso de molienda
 
-1. Control de Proceso de Manufactura
+**Implementación**:
 
-   - Dimensiones críticas
-   - Temperaturas
-   - Presiones
-   - Tiempos de ciclo
+- SPC multivariado con análisis de componentes principales
+- Integración con Digital Twin del proceso
+- Algoritmos predictivos de mantenimiento basados en variabilidad
 
-2. Control de Calidad de Servicio
-   - Tiempos de respuesta
-   - Tasas de error
-   - Satisfacción del cliente
-   - Cumplimiento de estándares
+**Resultados**:
 
-## 🎓 Ejercicio Práctico
+- Incremento de 4.3% en recuperación de cobre
+- Reducción de 15% en consumo energético
+- Aumento de 8% en throughput del proceso
+- ROI del proyecto: 580% en primer año
 
-### Construcción de Carta X-R
+**Tecnologías Utilizadas**:
 
-Datos de proceso:
+- Sensores IoT avanzados
+- Plataforma Azure IoT Edge para análisis en la nube
+- Algoritmos propios de machine learning
 
+### 2. Industria Forestal - ARAUCO
+
+**Desafío**: Control de calidad en líneas de alto volumen
+
+**Implementación**:
+
+- SPC automatizado con visión artificial
+- Control adaptativo de procesos
+- Análisis predictivo de fallos
+
+**Resultados**:
+
+- Reducción de 32% en rechazos de producto
+- Aumento de la velocidad de línea en 13%
+- Incremento de capacidad efectiva en 9.5%
+- Ahorro anual: $2.8 millones USD
+
+## 💻 Implementación Práctica
+
+### 1. Cálculo de Límites de Control X-R
+
+**Datos**: Mediciones de diámetro de ejes (mm)
+
+| Subgrupo | 1     | 2     | 3     | 4     | 5     | X̄      | R    |
+| -------- | ----- | ----- | ----- | ----- | ----- | ------ | ---- |
+| 1        | 10.02 | 10.05 | 9.98  | 10.01 | 10.03 | 10.018 | 0.07 |
+| 2        | 10.04 | 10.07 | 10.02 | 10.03 | 10.01 | 10.034 | 0.06 |
+| 3        | 9.99  | 10.02 | 10.04 | 10.02 | 10.01 | 10.016 | 0.05 |
+| 4        | 10.01 | 10.03 | 10.05 | 9.99  | 10.02 | 10.020 | 0.06 |
+| 5        | 10.03 | 10.02 | 10.01 | 10.00 | 10.02 | 10.016 | 0.03 |
+
+**Paso 1**: Calcular promedios globales
+
+$$\bar{\bar{X}} = \frac{10.018 + 10.034 + 10.016 + 10.020 + 10.016}{5} = 10.0208$$
+
+$$\bar{R} = \frac{0.07 + 0.06 + 0.05 + 0.06 + 0.03}{5} = 0.054$$
+
+**Paso 2**: Calcular límites (n=5, A₂=0.577, D₃=0, D₄=2.115)
+
+$$UCL_{\bar{X}} = 10.0208 + (0.577 \times 0.054) = 10.0520$$
+$$LCL_{\bar{X}} = 10.0208 - (0.577 \times 0.054) = 9.9896$$
+$$UCL_{R} = 2.115 \times 0.054 = 0.1142$$
+$$LCL_{R} = 0 \times 0.054 = 0$$
+
+### 2. Interpretación de Cartas
+
+```python
+# Código Python para generar cartas de control
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.pyplot import figure
+
+# Datos de medias y rangos
+medias = [10.018, 10.034, 10.016, 10.020, 10.016, 10.023, 10.015,
+          10.031, 10.028, 10.020, 10.024, 10.014, 10.018, 10.031, 10.019]
+
+# Límites calculados
+ucl_x, cl_x, lcl_x = 10.052, 10.0208, 9.9896
+
+# Crear gráfico
+fig, ax = plt.subplots(figsize=(10, 6))
+ax.plot(medias, marker='o', color='blue', linestyle='-')
+ax.axhline(y=cl_x, color='green', linestyle='-')
+ax.axhline(y=ucl_x, color='red', linestyle='--')
+ax.axhline(y=lcl_x, color='red', linestyle='--')
+
+# Etiquetas
+ax.set_title('Carta de Control X', fontsize=15)
+ax.set_xlabel('Número de Subgrupo', fontsize=12)
+ax.set_ylabel('Media del Subgrupo', fontsize=12)
+
+plt.show()
 ```
-Subgrupo | X1 | X2 | X3 | X4 | X̄ | R
-1        | 10 | 12 | 11 | 13 | 11.5 | 3
-2        | 11 | 13 | 12 | 10 | 11.5 | 3
-3        | 12 | 11 | 13 | 12 | 12.0 | 2
-4        | 11 | 12 | 10 | 11 | 11.0 | 2
+
+## 🔬 Capacidad de Proceso
+
+### Índices de Capacidad
+
+$$C_p = \frac{USL - LSL}{6\sigma}$$
+
+$$C_{pk} = \min\left(\frac{USL - \mu}{3\sigma}, \frac{\mu - LSL}{3\sigma}\right)$$
+
+$$P_{pm} = \frac{C_p}{\sqrt{1 + \left(\frac{\mu - T}{\sigma}\right)^2}}$$
+
+Donde:
+
+- USL = Límite Superior de Especificación
+- LSL = Límite Inferior de Especificación
+- T = Valor Objetivo
+
+### Interpretación de Cp y Cpk
+
+| Valor     | Interpretación       | Nivel Sigma | DPMO           |
+| --------- | -------------------- | ----------- | -------------- |
+| < 1.00    | Incapaz              | < 3σ        | > 66,807       |
+| 1.00-1.33 | Marginalmente capaz  | 3σ - 4σ     | 66,807 - 6,210 |
+| 1.33-1.67 | Capaz                | 4σ - 5σ     | 6,210 - 233    |
+| 1.67-2.00 | Muy capaz            | 5σ - 6σ     | 233 - 3.4      |
+| > 2.00    | Extremadamente capaz | > 6σ        | < 3.4          |
+
+### Ejemplo de Cálculo
+
+Para nuestro proceso de ejes con:
+
+- LSL = 9.95 mm
+- USL = 10.05 mm
+- μ = 10.0208 mm
+- σ = 0.015 mm
+
+$$C_p = \frac{10.05 - 9.95}{6 \times 0.015} = \frac{0.1}{0.09} = 1.11$$
+
+$$C_{pk} = \min\left(\frac{10.05 - 10.0208}{3 \times 0.015}, \frac{10.0208 - 9.95}{3 \times 0.015}\right) = \min(0.65, 1.57) = 0.65$$
+
+## 📱 Herramientas de Software para SPC Avanzado
+
+| Software           | Fortalezas                                        | Desventajas                                   | Costo Aproximado   |
+| ------------------ | ------------------------------------------------- | --------------------------------------------- | ------------------ |
+| **Minitab**        | Análisis estadístico completo, interfaz intuitiva | Limitado en automatización, no es tiempo real | USD 1,500/licencia |
+| **JMP (SAS)**      | Visualización avanzada, diseño de experimentos    | Curva de aprendizaje elevada                  | USD 1,800/licencia |
+| **InfinityQS**     | SPC en tiempo real, conectividad IoT              | Requiere infraestructura significativa        | Suscripción anual  |
+| **SPC for Excel**  | Bajo costo, integración con Office                | Limitaciones en big data                      | USD 300/licencia   |
+| **Python con SPC** | Gratuito, personalizable, integrable              | Requiere programación                         | Gratuito           |
+
+### Implementación en Python: Control Multivariado
+
+```python
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from scipy import stats
+import seaborn as sns
+from sklearn.decomposition import PCA
+from sklearn.preprocessing import StandardScaler
+
+# Cargar datos multivariados (ejemplo)
+datos = pd.DataFrame({
+    'Temperatura': np.random.normal(85, 2, 100),
+    'Presión': np.random.normal(120, 4, 100),
+    'Viscosidad': np.random.normal(45, 1.5, 100),
+    'Densidad': np.random.normal(1.2, 0.05, 100),
+})
+
+# Escalar datos
+scaler = StandardScaler()
+datos_scaled = scaler.fit_transform(datos)
+
+# Análisis de componentes principales
+pca = PCA(n_components=2)
+pca_result = pca.fit_transform(datos_scaled)
+
+# T2 de Hotelling
+n = len(datos)
+p = datos.shape[1]
+t2_limit = ((n-1)*(n+1)*p/(n*(n-p)))*stats.f.ppf(0.99, p, n-p)
+t2 = np.sum((pca_result**2)/pca.explained_variance_, axis=1)
+
+# Visualización
+plt.figure(figsize=(12, 6))
+plt.subplot(1, 2, 1)
+plt.plot(t2, marker='o')
+plt.axhline(y=t2_limit, color='r', linestyle='--')
+plt.title('T² de Hotelling')
+plt.xlabel('Observación')
+plt.ylabel('T²')
+
+plt.subplot(1, 2, 2)
+plt.scatter(pca_result[:, 0], pca_result[:, 1])
+plt.title('PCA - Primeras 2 Componentes')
+plt.xlabel('PC1')
+plt.ylabel('PC2')
+
+plt.tight_layout()
+plt.show()
+
+# Detectar puntos fuera de control
+fuera_control = np.where(t2 > t2_limit)[0]
+print(f"Puntos fuera de control: {fuera_control}")
+if len(fuera_control) > 0:
+    print("Análisis de contribución para puntos fuera de control:")
+    # Calcular contribuciones
+    for punto in fuera_control:
+        contrib = datos_scaled[punto]**2
+        print(f"Punto {punto}: {list(zip(datos.columns, contrib))}")
 ```
 
-Calcular:
+## 📋 Lista de Verificación para Implementación de SPC
 
-1. X̄̄ = (11.5 + 11.5 + 12.0 + 11.0)/4 = 11.5
-2. R̄ = (3 + 3 + 2 + 2)/4 = 2.5
-3. UCLx = X̄̄ + A₂R̄ = 11.5 + (0.729 × 2.5) = 13.32
-4. LCLx = X̄̄ - A₂R̄ = 11.5 - (0.729 × 2.5) = 9.68
+### Fase de Planificación
 
-## 🔑 Consejos Clave
+- [ ] Identificar procesos críticos a monitorear
+- [ ] Seleccionar variables clave (CTQ - Critical To Quality)
+- [ ] Definir métodos de muestreo y frecuencia
+- [ ] Validar sistemas de medición (MSA/GR&R)
+- [ ] Establecer objetivos cuantificables
 
-1. Seleccionar la carta apropiada
-2. Mantener muestras representativas
-3. Actuar sobre causas especiales
-4. Documentar cambios y acciones
+### Fase de Implementación
 
-## 📝 Conclusión
+- [ ] Seleccionar tipos adecuados de cartas de control
+- [ ] Recopilar datos históricos (mínimo 20-25 subgrupos)
+- [ ] Calcular límites de control preliminares
+- [ ] Eliminar causas especiales iniciales
+- [ ] Recalcular límites de control
 
-Las cartas de control son como el panel de control de nuestra fábrica de chocolate, permitiéndonos detectar cuando algo se sale de lo normal y tomar acciones correctivas oportunas para mantener la calidad del producto.
+### Fase de Operación
 
-## 📚 Fórmulas Relevantes
+- [ ] Implementar protocolo de respuesta
+- [ ] Capacitar personal en interpretación
+- [ ] Establecer reuniones de revisión de datos
+- [ ] Documentar acciones correctivas
+- [ ] Mantener registros de cambios en el proceso
 
-### Cartas X-R
+### Fase de Mejora
 
-- UCLx = X̄̄ + A₂R̄
-- LCLx = X̄̄ - A₂R̄
-- UCLR = D₄R̄
-- LCLR = D₃R̄
+- [ ] Analizar capacidad de proceso
+- [ ] Implementar mejoras de reducción de variabilidad
+- [ ] Recalcular límites después de mejoras
+- [ ] Documentar lecciones aprendidas
+- [ ] Estandarizar mejores prácticas
 
-### Cartas X-S
-
-- UCLx = X̄̄ + A₃S̄
-- LCLx = X̄̄ - A₃S̄
-- UCLs = B₄S̄
-- LCLs = B₃S̄
-
-### Cartas de Atributos
-
-- Carta p: UCL = p̄ + 3√(p̄(1-p̄)/n)
-- Carta np: UCL = np̄ + 3√(np̄(1-p̄))
-- Carta c: UCL = c̄ + 3√c̄
-- Carta u: UCL = ū + 3√(ū/n)
-
-### Capacidad del Proceso
-
-- Cp = (USL - LSL)/(6σ)
-- Cpk = min[(USL - μ)/(3σ), (μ - LSL)/(3σ)]
-- Pp = (USL - LSL)/(6s)
-- Ppk = min[(USL - X̄)/(3s), (X̄ - LSL)/(3s)]
-
-## 🔍 Recursos Adicionales
-
-- Manual de cartas de control
-- Tablas de constantes
-- Ejemplos resueltos
-- Guías de interpretación
+> 💡 **Consejo**: El SPC no debe ser una actividad independiente sino parte integral del sistema de calidad. La integración con metodologías Lean, Six Sigma y TPM potencia significativamente sus resultados.

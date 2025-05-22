@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import { ChevronRight, Download } from 'lucide-react';
 import { convertMarkdownToPDF, downloadPDF } from '../utils/pdfUtils';
 

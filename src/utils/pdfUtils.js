@@ -153,3 +153,69 @@ export const downloadPDF = async (url, filename) => {
         throw error;
     }
 };
+
+/**
+ * Procesa una ruta de archivo PDF para asegurar el formato correcto
+ * @param {string} path - Ruta original del archivo PDF
+ * @returns {string} Ruta procesada para usar con el visor de PDF
+ */
+export const processPdfPath = (path) => {
+  if (!path) return '';
+  
+  // Remover cualquier /content/ inicial para evitar duplicación
+  const cleanPath = path.replace(/^\/?(content\/)+/, '');
+  // Asegurar que la ruta comience con /content/
+  return `/content/${cleanPath}`;
+};
+
+/**
+ * Limpia los recursos del PDF para evitar fugas de memoria
+ * @param {Object} documentRef - Referencia al componente Document de react-pdf
+ * @param {Object} abortController - AbortController para cancelar solicitudes fetch
+ */
+export const cleanupPdfResources = (documentRef, abortController) => {
+  // Cancelar tareas de renderizado
+  if (documentRef?.current?.cancelRenderTasks) {
+    try {
+      documentRef.current.cancelRenderTasks();
+    } catch (err) {
+      console.log('Error al cancelar tareas de PDF:', err);
+    }
+  }
+  
+  // Cancelar solicitudes fetch pendientes
+  if (abortController?.abort) {
+    try {
+      abortController.abort();
+    } catch (err) {
+      console.log('Error al cancelar solicitud:', err);
+    }
+  }
+};
+
+/**
+ * Verifica si un error es por cancelación (normal durante navegación rápida)
+ * @param {Error} error - El error a verificar
+ * @returns {boolean} true si es un error por cancelación
+ */
+export const isCancellationError = (error) => {
+  if (!error) return false;
+  
+  return (
+    error.name === 'AbortError' || 
+    error.message?.includes('aborted') ||
+    error.message?.includes('terminated') ||
+    error.message?.includes('destroyed') ||
+    error.message?.includes('Worker was terminated')
+  );
+};
+
+/**
+ * Crea un nuevo AbortController para controlar solicitudes fetch
+ * @returns {AbortController} Una nueva instancia de AbortController
+ */
+export const createPdfAbortController = () => {
+  return typeof AbortController !== 'undefined' ? new AbortController() : null;
+};
+
+export { generateHTML, pdfStyles };

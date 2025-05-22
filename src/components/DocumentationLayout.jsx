@@ -36,10 +36,18 @@ const DocumentationLayout = ({ defaultSection = 'clases' }) => {
           return;
         }
 
-        const section = activeSection;
-        const filePath = `/content/${section}/${activePage.slug}${
-          activePage.isPdf ? '.pdf' : '.md'
-        }`;
+        let filePath;
+        // Si el elemento tiene una ruta específica (para archivos en I1 o I2), usarla
+        if (activePage.path) {
+          // La propiedad path ya incluye el nombre del archivo con su extensión
+          filePath = `/content/${activePage.path}`;
+        } else {
+          // Si no, usar la ruta tradicional
+          const section = activeSection;
+          filePath = `/content/${section}/${activePage.slug}${
+            activePage.isPdf ? '.pdf' : '.md'
+          }`;
+        }
 
         if (activePage.isPdf) {
           setCurrentContent(filePath);
@@ -164,8 +172,12 @@ const DocumentationLayout = ({ defaultSection = 'clases' }) => {
         {/* Contenido principal */}
         <main className="w-full px-4 py-6 lg:px-8 lg:py-12 overflow-x-hidden">
           <div className="max-w-4xl mx-auto">
-            {activePage?.isPdf ? (
-              <PDFViewer url={currentContent} title={activePage.title} />
+            {!activePage ? (
+              <div className="text-center p-8">
+                <p className="text-slate-600">Seleccione un documento del menú para ver su contenido.</p>
+              </div>
+            ) : activePage.isPdf && currentContent ? (
+              <PDFViewer path={currentContent} title={activePage.title} />
             ) : (
               <MarkdownContent
                 content={currentContent}

@@ -8,7 +8,8 @@ import MermaidDiagram from './MermaidDiagram';
 import Admonition from './Admonition';
 import '../styles/markdown.css';
 
-const MarkdownContent = ({ content, currentPage = null }) => {
+// Usar parámetros por defecto en la función en lugar de defaultProps
+const MarkdownContent = ({ content = null, currentPage = null }) => {
   // Si hay currentPage y es PDF, mostrar el visor de PDF
   if (currentPage?.isPdf) {
     // Determinar la sección basada en el slug y título
@@ -135,11 +136,6 @@ MarkdownContent.propTypes = {
     slug: PropTypes.string,
     title: PropTypes.string,
   }),
-};
-
-MarkdownContent.defaultProps = {
-  content: null,
-  currentPage: null,
 };
 
 export default MarkdownContent;

@@ -38,7 +38,8 @@ export default defineConfig({
 
   // Configuración de optimización
   optimizeDeps: {
-    include: ['react-pdf', 'pdfjs-dist']
+    include: ['react-pdf', 'pdfjs-dist'],
+    exclude: ['pdfjs-dist/build/pdf.worker.js']
   },
 
   // Configuración de build
@@ -47,12 +48,17 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'index.html')
       },
+      output: {
+        manualChunks: {
+          pdfWorker: ['pdfjs-dist/build/pdf.worker.min']
+        }
+      }
     },
-    // Configuración de assets
-    assetsDir: 'assets',
-    // Asegurar que los archivos estáticos se copien
-    copyPublicDir: true,
-    // Manejar archivos grandes (PDFs)
+    // Asegurar que el worker se copie durante el build
+    assetsInclude: ['**/*.wasm', '**/*.worker.js'],
+    // Evitar que el worker se procese como ES module
+    target: ['esnext'],
+    // Mantener el worker como un archivo separado
     chunkSizeWarningLimit: 2000,
   }
 });

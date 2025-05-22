@@ -28,21 +28,34 @@ const Navigation = ({
     const items = tableOfContents[activeSection] || [];
     return items.map((item) => ({
       ...item,
-      key: item.id || `${activeSection}-${item.slug}`,
+      key: item.id || `${item.sourceSection || activeSection}-${item.slug}`,
     }));
   }, [activeSection, tableOfContents]);
 
   const handleDownload = async (item) => {
     try {
-      if (item.isPdf) {
-        const pdfUrl = `/content/${activeSection}/${item.slug}.pdf`;
-        await downloadPDF(pdfUrl, `${item.title}.pdf`);
+      // Si el item tiene una ruta específica (archivos en I1 o I2), usarla
+      if (item.path) {
+        if (item.isPdf) {
+          const pdfUrl = `/content/${item.path}`;
+          await downloadPDF(pdfUrl, `${item.title}.pdf`);
+        } else {
+          const response = await fetch(`/content/${item.path}`);
+          const markdown = await response.text();
+          await convertMarkdownToPDF(markdown, item.title);
+        }
       } else {
-        const response = await fetch(
-          `/content/${activeSection}/${item.slug}.md`
-        );
-        const markdown = await response.text();
-        await convertMarkdownToPDF(markdown, item.title);
+        // Si no tiene ruta específica, usar la ruta tradicional
+        if (item.isPdf) {
+          const pdfUrl = `/content/${activeSection}/${item.slug}.pdf`;
+          await downloadPDF(pdfUrl, `${item.title}.pdf`);
+        } else {
+          const response = await fetch(
+            `/content/${activeSection}/${item.slug}.md`
+          );
+          const markdown = await response.text();
+          await convertMarkdownToPDF(markdown, item.title);
+        }
       }
     } catch (error) {
       console.error('Error downloading document:', error);
@@ -98,7 +111,8 @@ const Navigation = ({
                 transition-all duration-200 ease-in-out
                 group flex items-center gap-3
                ${
-                 activePage?.slug === item.slug
+                 activePage?.slug === item.slug && 
+                 (!activePage?.path || activePage?.path === item.path)
                    ? 'bg-slate-100 text-slate-900 font-medium'
                    : 'text-slate-600 hover:bg-slate-50'
                }
@@ -108,7 +122,12 @@ const Navigation = ({
                 size={16}
                 className={`
                   transition-transform duration-200
-                 ${activePage?.slug === item.slug ? 'rotate-90' : ''}
+                 ${
+                   activePage?.slug === item.slug && 
+                   (!activePage?.path || activePage?.path === item.path)
+                     ? 'rotate-90' 
+                     : ''
+                 }
                   text-slate-400 group-hover:text-slate-600
                 `}
               />
@@ -134,6 +153,8 @@ Navigation.propTypes = {
   activePage: PropTypes.shape({
     slug: PropTypes.string,
     title: PropTypes.string,
+    path: PropTypes.string,
+    sourceSection: PropTypes.string,
   }),
   onPageChange: PropTypes.func.isRequired,
   tableOfContents: PropTypes.object.isRequired,

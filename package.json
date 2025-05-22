@@ -6,11 +6,14 @@
   "scripts": {
     "normalize-files": "node scripts/normalize-filenames.js",
     "generate-content-map": "node scripts/generate-content-map.js",
-    "prepare-content": "npm run normalize-files && npm run generate-content-map",
+    "fix-content-map": "node scripts/fix-content-map.js",
+    "reorganize-content": "node scripts/reorganize-content.js",
+    "prepare-content": "npm run && npm run generate-content-map",
     "dev": "npm run prepare-content && vite",
     "build": "npm run prepare-content && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test:routes": "node scripts/test-routes.js"
   },
   "dependencies": {
     "@shadcn/ui": "^0.0.4",
@@ -27,6 +30,7 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-markdown": "^9.0.1",
+    "react-pdf": "^9.2.1",
     "react-router-dom": "^6.28.0",
     "react-syntax-highlighter": "^15.6.1",
     "rehype-katex": "^7.0.1",

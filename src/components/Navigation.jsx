@@ -1,6 +1,8 @@
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import { ChevronRight, Download } from 'lucide-react';
+import PropTypes from 'prop-types';
 import { convertMarkdownToPDF, downloadPDF } from '../utils/pdfUtils';
+import InterrogacionesSelector from './InterrogacionesSelector';
 
 const Navigation = ({
   activeSection,
@@ -8,6 +10,8 @@ const Navigation = ({
   activePage,
   onPageChange,
   tableOfContents,
+  selectedInterrogaciones,
+  onInterrogacionesChange,
 }) => {
   const sections = [
     { id: 'ayudantias', label: 'Ayudantías' },
@@ -16,6 +20,7 @@ const Navigation = ({
     { id: 'documentos', label: 'Documentos' },
     { id: 'evaluaciones', label: 'Evaluaciones' },
     { id: 'guias', label: 'Guías' },
+    { id: 'tareas', label: 'Tareas' },
     { id: 'otros', label: 'Otros' },
   ];
 
@@ -46,6 +51,14 @@ const Navigation = ({
 
   return (
     <div className="space-y-6">
+      {/* Selector de interrogaciones */}
+      {selectedInterrogaciones && onInterrogacionesChange && (
+        <InterrogacionesSelector
+          selectedInterrogaciones={selectedInterrogaciones}
+          onSelectionChange={onInterrogacionesChange}
+        />
+      )}
+
       {/* Selector de sección */}
       <div className="relative">
         <select
@@ -114,6 +127,18 @@ const Navigation = ({
       </div>
     </div>
   );
+};
+Navigation.propTypes = {
+  activeSection: PropTypes.string.isRequired,
+  setActiveSection: PropTypes.func.isRequired,
+  activePage: PropTypes.shape({
+    slug: PropTypes.string,
+    title: PropTypes.string,
+  }),
+  onPageChange: PropTypes.func.isRequired,
+  tableOfContents: PropTypes.object.isRequired,
+  selectedInterrogaciones: PropTypes.array,
+  onInterrogacionesChange: PropTypes.func,
 };
 
 export default Navigation;

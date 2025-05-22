@@ -14,7 +14,7 @@ const DocumentationLayout = ({ defaultSection = 'clases' }) => {
   const [activeHeading, setActiveHeading] = useState(null);
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   const [isMobileTocOpen, setIsMobileTocOpen] = useState(false);
-  const { tableOfContents, loading: navLoading } = useNavigation();
+  const { tableOfContents, selectedInterrogaciones, setSelectedInterrogaciones, loading: navLoading } = useNavigation();
   const [currentContent, setCurrentContent] = useState(null);
 
   useEffect(() => {
@@ -132,6 +132,7 @@ const DocumentationLayout = ({ defaultSection = 'clases' }) => {
                     {activeSection === 'evaluaciones' &&
                       'Evaluaciones y soluciones'}
                     {activeSection === 'guias' && 'Guías de ejercicios'}
+                    {activeSection === 'tareas' && 'Tareas del curso'}
                     {activeSection === 'otros' && 'Otros recursos'}
                     {activeSection === 'anuncios' && 'Anuncios del curso'}
                   </p>
@@ -153,6 +154,8 @@ const DocumentationLayout = ({ defaultSection = 'clases' }) => {
                   setIsMobileNavOpen(false);
                 }}
                 tableOfContents={tableOfContents}
+                selectedInterrogaciones={selectedInterrogaciones}
+                onInterrogacionesChange={setSelectedInterrogaciones}
               />
             )}
           </div>
@@ -220,6 +223,7 @@ DocumentationLayout.propTypes = {
     'documentos',
     'evaluaciones',
     'guias',
+    'tareas',
     'otros',
     'anuncios',
   ]),

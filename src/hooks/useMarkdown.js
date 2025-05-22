@@ -1,44 +1,37 @@
 import { useState, useEffect } from 'react';
 
-const useMarkdown = (slug) => {
+const useMarkdown = (path) => {
     const [content, setContent] = useState('');
-    const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
     useEffect(() => {
         const fetchMarkdown = async () => {
-            if (!slug) {
-                setLoading(false);
-                return;
-            }
-
             try {
-                setLoading(true);
-                const section = slug.includes('pregunta') ? 'practice' : 'course';
-                const url = `/content/${section}/${slug}.md`;
-                console.log('Intentando cargar:', url);
-                const response = await fetch(url);
+                // Simplificar el manejo de rutas
+                const cleanPath = path.replace(/^\/?(content\/)+/, '');
+                const url = `/content/${cleanPath}`;
 
+                console.log('Markdown path:', { original: path, processed: url });
+
+                const response = await fetch(url);
                 if (!response.ok) {
-                    throw new Error('No se pudo cargar el contenido');
+                    throw new Error(`Error al cargar el markdown: ${response.status}`);
                 }
 
                 const text = await response.text();
-                console.log('Contenido cargado:', text.substring(0, 200)); // Debug
                 setContent(text);
-                setError(null);
             } catch (err) {
+                console.error('Error al cargar markdown:', err);
                 setError(err.message);
-                console.error('Error cargando markdown:', err);
-            } finally {
-                setLoading(false);
             }
         };
 
-        fetchMarkdown();
-    }, [slug]);
+        if (path) {
+            fetchMarkdown();
+        }
+    }, [path]);
 
-    return { content, loading, error };
+    return { content, error };
 };
 
 export default useMarkdown;

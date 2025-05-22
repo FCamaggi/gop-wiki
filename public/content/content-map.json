@@ -1,183 +1,764 @@
 {
   "ayudantias": [
     {
-      "originalName": "ayudantia-1.pdf",
-      "slug": "ayudantia-1",
-      "title": "ayudantia 1",
+      "originalName": "ayudantia-1-enunciado.pdf",
+      "slug": "ayudantia-1-enunciado",
+      "title": "ayudantia 1 enunciado",
       "order": 0,
-      "isPdf": true
+      "isPdf": true,
+      "isPptx": false,
+      "interrogaciones": [
+        "I1"
+      ],
+      "path": "content/I1/ayudantias/ayudantia-1-enunciado.pdf"
+    },
+    {
+      "originalName": "ayudantia-1-solucion.pdf",
+      "slug": "ayudantia-1-solucion",
+      "title": "ayudantia 1 solucion",
+      "order": 0,
+      "isPdf": true,
+      "isPptx": false,
+      "interrogaciones": [
+        "I1"
+      ],
+      "path": "content/I1/ayudantias/ayudantia-1-solucion.pdf"
     },
     {
       "originalName": "ayudantia-2-enunciado.pdf",
       "slug": "ayudantia-2-enunciado",
       "title": "ayudantia 2 enunciado",
       "order": 0,
-      "isPdf": true
+      "isPdf": true,
+      "isPptx": false,
+      "interrogaciones": [
+        "I1"
+      ],
+      "path": "content/I1/ayudantias/ayudantia-2-enunciado.pdf"
     },
     {
       "originalName": "ayudantia-2-solucion.pdf",
       "slug": "ayudantia-2-solucion",
       "title": "ayudantia 2 solucion",
       "order": 0,
-      "isPdf": true
+      "isPdf": true,
+      "isPptx": false,
+      "interrogaciones": [
+        "I1"
+      ],
+      "path": "content/I1/ayudantias/ayudantia-2-solucion.pdf"
     },
     {
       "originalName": "ayudantia-3-enunciado.pdf",
       "slug": "ayudantia-3-enunciado",
       "title": "ayudantia 3 enunciado",
       "order": 0,
-      "isPdf": true
+      "isPdf": true,
+      "isPptx": false,
+      "interrogaciones": [
+        "I1"
+      ],
+      "path": "content/I1/ayudantias/ayudantia-3-enunciado.pdf"
     },
     {
       "originalName": "ayudantia-3-solucion.pdf",
       "slug": "ayudantia-3-solucion",
       "title": "ayudantia 3 solucion",
       "order": 0,
-      "isPdf": true
+      "isPdf": true,
+      "isPptx": false,
+      "interrogaciones": [
+        "I1"
+      ],
+      "path": "content/I1/ayudantias/ayudantia-3-solucion.pdf"
     },
     {
-      "originalName": "pauta-ayudantia-1.pdf",
-      "slug": "pauta-ayudantia-1",
-      "title": "pauta ayudantia 1",
+      "originalName": "Ayudantía 6 - Solucion.pptx",
+      "slug": "ayudantia-6-solucion",
+      "title": "Ayudantía 6   Solucion",
       "order": 0,
-      "isPdf": true
+      "isPdf": false,
+      "isPptx": true,
+      "interrogaciones": [
+        "I2"
+      ],
+      "path": "content/I2/ayudantias/Ayudantía 6 - Solucion.pptx"
+    },
+    {
+      "originalName": "Ayudantía 7 - solucion.pptx",
+      "slug": "ayudantia-7-solucion",
+      "title": "Ayudantía 7   solucion",
+      "order": 0,
+      "isPdf": false,
+      "isPptx": true,
+      "interrogaciones": [
+        "I2"
+      ],
+      "path": "content/I2/ayudantias/Ayudantía 7 - solucion.pptx"
+    },
+    {
+      "originalName": "ayudantia-4-enunciado.pdf",
+      "slug": "ayudantia-4-enunciado",
+      "title": "ayudantia 4 enunciado",
+      "order": 0,
+      "isPdf": true,
+      "isPptx": false,
+      "interrogaciones": [
+        "I2"
+      ],
+      "path": "content/I2/ayudantias/ayudantia-4-enunciado.pdf"
+    },
+    {
+      "originalName": "ayudantia-4-solucion.pdf",
+      "slug": "ayudantia-4-solucion",
+      "title": "ayudantia 4 solucion",
+      "order": 0,
+      "isPdf": true,
+      "isPptx": false,
+      "interrogaciones": [
+        "I2"
+      ],
+      "path": "content/I2/ayudantias/ayudantia-4-solucion.pdf"
+    },
+    {
+      "originalName": "ayudantia-5-enunciado.pdf",
+      "slug": "ayudantia-5-enunciado",
+      "title": "ayudantia 5 enunciado",
+      "order": 0,
+      "isPdf": true,
+      "isPptx": false,
+      "interrogaciones": [
+        "I2"
+      ],
+      "path": "content/I2/ayudantias/ayudantia-5-enunciado.pdf"
+    },
+    {
+      "originalName": "ayudantia-6-enunciado.pdf",
+      "slug": "ayudantia-6-enunciado",
+      "title": "ayudantia 6 enunciado",
+      "order": 0,
+      "isPdf": true,
+      "isPptx": false,
+      "interrogaciones": [
+        "I2"
+      ],
+      "path": "content/I2/ayudantias/ayudantia-6-enunciado.pdf"
+    },
+    {
+      "originalName": "ayudantia-7-enunciado.pdf",
+      "slug": "ayudantia-7-enunciado",
+      "title": "ayudantia 7 enunciado",
+      "order": 0,
+      "isPdf": true,
+      "isPptx": false,
+      "interrogaciones": [
+        "I2"
+      ],
+      "path": "content/I2/ayudantias/ayudantia-7-enunciado.pdf"
+    },
+    {
+      "originalName": "ayudantia-8-enunciado.pdf",
+      "slug": "ayudantia-8-enunciado",
+      "title": "ayudantia 8 enunciado",
+      "order": 0,
+      "isPdf": true,
+      "isPptx": false,
+      "interrogaciones": [
+        "I2"
+      ],
+      "path": "content/I2/ayudantias/ayudantia-8-enunciado.pdf"
     }
   ],
   "casos": [
     {
-      "originalName": "caso_1_morrison.pdf",
-      "slug": "caso_1_morrison",
-      "title": "caso_1_morrison",
+      "originalName": "caso-1-morrison.pdf",
+      "slug": "caso-1-morrison",
+      "title": "Caso 1: morrison",
+      "order": 1,
+      "isPdf": true,
+      "isPptx": false,
+      "interrogaciones": [
+        "I1"
+      ],
+      "path": "content/I1/casos/caso-1-morrison.pdf"
+    },
+    {
+      "originalName": "resumen-caso-easy-flower.md",
+      "slug": "resumen-caso-easy-flower",
+      "title": "resumen caso easy flower",
       "order": 0,
-      "isPdf": true
+      "isPdf": false,
+      "isPptx": false,
+      "interrogaciones": [
+        "I2"
+      ],
+      "path": "content/I2/casos/resumen-caso-easy-flower.md"
+    },
+    {
+      "originalName": "resumen-caso-sport-obermeyer.md",
+      "slug": "resumen-caso-sport-obermeyer",
+      "title": "resumen caso sport obermeyer",
+      "order": 0,
+      "isPdf": false,
+      "isPptx": false,
+      "interrogaciones": [
+        "I2"
+      ],
+      "path": "content/I2/casos/resumen-caso-sport-obermeyer.md"
+    },
+    {
+      "originalName": "caso-2-sport_obermeyer_spa-.pdf",
+      "slug": "caso-2-sport_obermeyer_spa-",
+      "title": "Caso 2: sport_obermeyer_spa ",
+      "order": 2,
+      "isPdf": true,
+      "isPptx": false,
+      "interrogaciones": [
+        "I2"
+      ],
+      "path": "content/I2/casos/caso-2-sport_obermeyer_spa-.pdf"
+    },
+    {
+      "originalName": "caso-3-easy_flower.pdf",
+      "slug": "caso-3-easy_flower",
+      "title": "Caso 3: easy_flower",
+      "order": 3,
+      "isPdf": true,
+      "isPptx": false,
+      "interrogaciones": [
+        "I2"
+      ],
+      "path": "content/I2/casos/caso-3-easy_flower.pdf"
     }
   ],
   "clases": [
     {
-      "originalName": "1-introduccion-y-estrategia-2025.03.06.pdf",
-      "slug": "1-introduccion-y-estrategia-2025.03.06",
-      "title": "1 introduccion y estrategia 2025.03.06",
+      "originalName": "01-introduccion-y-estrategia-2025.03.06.pdf",
+      "slug": "01-introduccion-y-estrategia-2025.03.06",
+      "title": "01 introduccion y estrategia 2025.03.06",
       "order": 0,
-      "isPdf": true
+      "isPdf": true,
+      "isPptx": false,
+      "interrogaciones": [
+        "I1"
+      ],
+      "path": "content/I1/clases/01-introduccion-y-estrategia-2025.03.06.pdf"
     },
     {
-      "originalName": "1-resumen-introduccion-y-estrategia-2025.03.06.md",
-      "slug": "1-resumen-introduccion-y-estrategia-2025.03.06",
-      "title": "1 resumen introduccion y estrategia 2025.03.06",
+      "originalName": "01-resumen-introduccion-y-estrategia-2025.03.06.md",
+      "slug": "01-resumen-introduccion-y-estrategia-2025.03.06",
+      "title": "01 resumen introduccion y estrategia 2025.03.06",
       "order": 0,
-      "isPdf": false
+      "isPdf": false,
+      "isPptx": false,
+      "interrogaciones": [
+        "I1"
+      ],
+      "path": "content/I1/clases/01-resumen-introduccion-y-estrategia-2025.03.06.md"
     },
     {
-      "originalName": "2-procesos-2025.03.11.pdf",
-      "slug": "2-procesos-2025.03.11",
-      "title": "2 procesos 2025.03.11",
+      "originalName": "02-procesos-2025.03.11.pdf",
+      "slug": "02-procesos-2025.03.11",
+      "title": "02 procesos 2025.03.11",
       "order": 0,
-      "isPdf": true
+      "isPdf": true,
+      "isPptx": false,
+      "interrogaciones": [
+        "I1"
+      ],
+      "path": "content/I1/clases/02-procesos-2025.03.11.pdf"
     },
     {
-      "originalName": "2-procesos-2025.03.13.pdf",
-      "slug": "2-procesos-2025.03.13",
-      "title": "2 procesos 2025.03.13",
+      "originalName": "02-procesos-2025.03.13.pdf",
+      "slug": "02-procesos-2025.03.13",
+      "title": "02 procesos 2025.03.13",
       "order": 0,
-      "isPdf": true
+      "isPdf": true,
+      "isPptx": false,
+      "interrogaciones": [
+        "I1"
+      ],
+      "path": "content/I1/clases/02-procesos-2025.03.13.pdf"
     },
     {
-      "originalName": "2-procesos-2025.03.18.pdf",
-      "slug": "2-procesos-2025.03.18",
-      "title": "2 procesos 2025.03.18",
+      "originalName": "02-procesos-2025.03.18.pdf",
+      "slug": "02-procesos-2025.03.18",
+      "title": "02 procesos 2025.03.18",
       "order": 0,
-      "isPdf": true
+      "isPdf": true,
+      "isPptx": false,
+      "interrogaciones": [
+        "I1"
+      ],
+      "path": "content/I1/clases/02-procesos-2025.03.18.pdf"
     },
     {
-      "originalName": "2-resumen-procesos-2025.03.11.md",
-      "slug": "2-resumen-procesos-2025.03.11",
-      "title": "2 resumen procesos 2025.03.11",
+      "originalName": "02-resumen-procesos-2025.03.11.md",
+      "slug": "02-resumen-procesos-2025.03.11",
+      "title": "02 resumen procesos 2025.03.11",
       "order": 0,
-      "isPdf": false
+      "isPdf": false,
+      "isPptx": false,
+      "interrogaciones": [
+        "I1"
+      ],
+      "path": "content/I1/clases/02-resumen-procesos-2025.03.11.md"
     },
     {
-      "originalName": "2-resumen-procesos-2025.03.13.md",
-      "slug": "2-resumen-procesos-2025.03.13",
-      "title": "2 resumen procesos 2025.03.13",
+      "originalName": "02-resumen-procesos-2025.03.13.md",
+      "slug": "02-resumen-procesos-2025.03.13",
+      "title": "02 resumen procesos 2025.03.13",
       "order": 0,
-      "isPdf": false
+      "isPdf": false,
+      "isPptx": false,
+      "interrogaciones": [
+        "I1"
+      ],
+      "path": "content/I1/clases/02-resumen-procesos-2025.03.13.md"
     },
     {
-      "originalName": "2-resumen-procesos-2025.03.18.md",
-      "slug": "2-resumen-procesos-2025.03.18",
-      "title": "2 resumen procesos 2025.03.18",
+      "originalName": "02-resumen-procesos-2025.03.18.md",
+      "slug": "02-resumen-procesos-2025.03.18",
+      "title": "02 resumen procesos 2025.03.18",
       "order": 0,
-      "isPdf": false
+      "isPdf": false,
+      "isPptx": false,
+      "interrogaciones": [
+        "I1"
+      ],
+      "path": "content/I1/clases/02-resumen-procesos-2025.03.18.md"
     },
     {
-      "originalName": "3-inventarios-deterministicos-2025.03.18.pdf",
-      "slug": "3-inventarios-deterministicos-2025.03.18",
-      "title": "3 inventarios deterministicos 2025.03.18",
+      "originalName": "03-inventarios-deterministicos-2025.03.18.pdf",
+      "slug": "03-inventarios-deterministicos-2025.03.18",
+      "title": "03 inventarios deterministicos 2025.03.18",
       "order": 0,
-      "isPdf": true
+      "isPdf": true,
+      "isPptx": false,
+      "interrogaciones": [
+        "I1"
+      ],
+      "path": "content/I1/clases/03-inventarios-deterministicos-2025.03.18.pdf"
     },
     {
-      "originalName": "3-inventarios-deterministicos-2025.03.20.pdf",
-      "slug": "3-inventarios-deterministicos-2025.03.20",
-      "title": "3 inventarios deterministicos 2025.03.20",
+      "originalName": "03-inventarios-deterministicos-2025.03.20.pdf",
+      "slug": "03-inventarios-deterministicos-2025.03.20",
+      "title": "03 inventarios deterministicos 2025.03.20",
       "order": 0,
-      "isPdf": true
+      "isPdf": true,
+      "isPptx": false,
+      "interrogaciones": [
+        "I1"
+      ],
+      "path": "content/I1/clases/03-inventarios-deterministicos-2025.03.20.pdf"
     },
     {
-      "originalName": "3-inventarios-deterministicos-2025.03.25.pdf",
-      "slug": "3-inventarios-deterministicos-2025.03.25",
-      "title": "3 inventarios deterministicos 2025.03.25",
+      "originalName": "03-inventarios-deterministicos-2025.03.25.pdf",
+      "slug": "03-inventarios-deterministicos-2025.03.25",
+      "title": "03 inventarios deterministicos 2025.03.25",
       "order": 0,
-      "isPdf": true
+      "isPdf": true,
+      "isPptx": false,
+      "interrogaciones": [
+        "I1"
+      ],
+      "path": "content/I1/clases/03-inventarios-deterministicos-2025.03.25.pdf"
     },
     {
-      "originalName": "3-resumen-inventarios-deterministicos-2025.03.18.md",
-      "slug": "3-resumen-inventarios-deterministicos-2025.03.18",
-      "title": "3 resumen inventarios deterministicos 2025.03.18",
+      "originalName": "03-resumen-inventarios-deterministicos-2025.03.18.md",
+      "slug": "03-resumen-inventarios-deterministicos-2025.03.18",
+      "title": "03 resumen inventarios deterministicos 2025.03.18",
       "order": 0,
-      "isPdf": false
+      "isPdf": false,
+      "isPptx": false,
+      "interrogaciones": [
+        "I1"
+      ],
+      "path": "content/I1/clases/03-resumen-inventarios-deterministicos-2025.03.18.md"
     },
     {
-      "originalName": "3-resumen-inventarios-deterministicos-2025.03.20.md",
-      "slug": "3-resumen-inventarios-deterministicos-2025.03.20",
-      "title": "3 resumen inventarios deterministicos 2025.03.20",
+      "originalName": "03-resumen-inventarios-deterministicos-2025.03.20.md",
+      "slug": "03-resumen-inventarios-deterministicos-2025.03.20",
+      "title": "03 resumen inventarios deterministicos 2025.03.20",
       "order": 0,
-      "isPdf": false
+      "isPdf": false,
+      "isPptx": false,
+      "interrogaciones": [
+        "I1"
+      ],
+      "path": "content/I1/clases/03-resumen-inventarios-deterministicos-2025.03.20.md"
     },
     {
-      "originalName": "3-resumen-inventarios-deterministicos-2025.03.25.md",
-      "slug": "3-resumen-inventarios-deterministicos-2025.03.25",
-      "title": "3 resumen inventarios deterministicos 2025.03.25",
+      "originalName": "03-resumen-inventarios-deterministicos-2025.03.25.md",
+      "slug": "03-resumen-inventarios-deterministicos-2025.03.25",
+      "title": "03 resumen inventarios deterministicos 2025.03.25",
       "order": 0,
-      "isPdf": false
+      "isPdf": false,
+      "isPptx": false,
+      "interrogaciones": [
+        "I1"
+      ],
+      "path": "content/I1/clases/03-resumen-inventarios-deterministicos-2025.03.25.md"
     },
     {
-      "originalName": "4-inventarios-variables-2025.03.25-1-.pdf",
-      "slug": "4-inventarios-variables-2025.03.25-1-",
-      "title": "4 inventarios variables 2025.03.25 1 ",
+      "originalName": "04-inventarios-variables-2025.03.25-1-.pdf",
+      "slug": "04-inventarios-variables-2025.03.25-1-",
+      "title": "04 inventarios variables 2025.03.25 1 ",
       "order": 0,
-      "isPdf": true
+      "isPdf": true,
+      "isPptx": false,
+      "interrogaciones": [
+        "I1"
+      ],
+      "path": "content/I1/clases/04-inventarios-variables-2025.03.25-1-.pdf"
     },
     {
-      "originalName": "4-inventarios-variables-2025.03.27.pdf",
-      "slug": "4-inventarios-variables-2025.03.27",
-      "title": "4 inventarios variables 2025.03.27",
+      "originalName": "04-inventarios-variables-2025.03.27.pdf",
+      "slug": "04-inventarios-variables-2025.03.27",
+      "title": "04 inventarios variables 2025.03.27",
       "order": 0,
-      "isPdf": true
+      "isPdf": true,
+      "isPptx": false,
+      "interrogaciones": [
+        "I1"
+      ],
+      "path": "content/I1/clases/04-inventarios-variables-2025.03.27.pdf"
     },
     {
-      "originalName": "4-resumen-inventarios-variables-2025.03.25-1-.md",
-      "slug": "4-resumen-inventarios-variables-2025.03.25-1-",
-      "title": "4 resumen inventarios variables 2025.03.25 1 ",
+      "originalName": "04-resumen-inventarios-variables-2025.03.25-1-.md",
+      "slug": "04-resumen-inventarios-variables-2025.03.25-1-",
+      "title": "04 resumen inventarios variables 2025.03.25 1 ",
       "order": 0,
-      "isPdf": false
+      "isPdf": false,
+      "isPptx": false,
+      "interrogaciones": [
+        "I1"
+      ],
+      "path": "content/I1/clases/04-resumen-inventarios-variables-2025.03.25-1-.md"
     },
     {
-      "originalName": "4-resumen-inventarios-variables-2025.03.27.md",
-      "slug": "4-resumen-inventarios-variables-2025.03.27",
-      "title": "4 resumen inventarios variables 2025.03.27",
+      "originalName": "04-resumen-inventarios-variables-2025.03.27.md",
+      "slug": "04-resumen-inventarios-variables-2025.03.27",
+      "title": "04 resumen inventarios variables 2025.03.27",
       "order": 0,
-      "isPdf": false
+      "isPdf": false,
+      "isPptx": false,
+      "interrogaciones": [
+        "I1"
+      ],
+      "path": "content/I1/clases/04-resumen-inventarios-variables-2025.03.27.md"
+    },
+    {
+      "originalName": "05-pronosticos-2025.04.01.pdf",
+      "slug": "05-pronosticos-2025.04.01",
+      "title": "05 pronosticos 2025.04.01",
+      "order": 0,
+      "isPdf": true,
+      "isPptx": false,
+      "interrogaciones": [
+        "I2"
+      ],
+      "path": "content/I2/clases/05-pronosticos-2025.04.01.pdf"
+    },
+    {
+      "originalName": "05-pronosticos-2025.04.03.pdf",
+      "slug": "05-pronosticos-2025.04.03",
+      "title": "05 pronosticos 2025.04.03",
+      "order": 0,
+      "isPdf": true,
+      "isPptx": false,
+      "interrogaciones": [
+        "I2"
+      ],
+      "path": "content/I2/clases/05-pronosticos-2025.04.03.pdf"
+    },
+    {
+      "originalName": "05-resumen-pronosticos-2025.04.01.md",
+      "slug": "05-resumen-pronosticos-2025.04.01",
+      "title": "05 resumen pronosticos 2025.04.01",
+      "order": 0,
+      "isPdf": false,
+      "isPptx": false,
+      "interrogaciones": [
+        "I2"
+      ],
+      "path": "content/I2/clases/05-resumen-pronosticos-2025.04.01.md"
+    },
+    {
+      "originalName": "05-resumen-pronosticos-2025.04.03.md",
+      "slug": "05-resumen-pronosticos-2025.04.03",
+      "title": "05 resumen pronosticos 2025.04.03",
+      "order": 0,
+      "isPdf": false,
+      "isPptx": false,
+      "interrogaciones": [
+        "I2"
+      ],
+      "path": "content/I2/clases/05-resumen-pronosticos-2025.04.03.md"
+    },
+    {
+      "originalName": "06-planificacion-agregada-2025.04.08.pdf",
+      "slug": "06-planificacion-agregada-2025.04.08",
+      "title": "06 planificacion agregada 2025.04.08",
+      "order": 0,
+      "isPdf": true,
+      "isPptx": false,
+      "interrogaciones": [
+        "I2"
+      ],
+      "path": "content/I2/clases/06-planificacion-agregada-2025.04.08.pdf"
+    },
+    {
+      "originalName": "06-resumen-planificacion-agregada-2025.04.08.md",
+      "slug": "06-resumen-planificacion-agregada-2025.04.08",
+      "title": "06 resumen planificacion agregada 2025.04.08",
+      "order": 0,
+      "isPdf": false,
+      "isPptx": false,
+      "interrogaciones": [
+        "I2"
+      ],
+      "path": "content/I2/clases/06-resumen-planificacion-agregada-2025.04.08.md"
+    },
+    {
+      "originalName": "07-diseno-de-productos-2025.04.10.pdf",
+      "slug": "07-diseno-de-productos-2025.04.10",
+      "title": "07 diseno de productos 2025.04.10",
+      "order": 0,
+      "isPdf": true,
+      "isPptx": false,
+      "interrogaciones": [
+        "I2"
+      ],
+      "path": "content/I2/clases/07-diseno-de-productos-2025.04.10.pdf"
+    },
+    {
+      "originalName": "07-resumen-diseno-de-productos-2025.04.10.md",
+      "slug": "07-resumen-diseno-de-productos-2025.04.10",
+      "title": "07 resumen diseno de productos 2025.04.10",
+      "order": 0,
+      "isPdf": false,
+      "isPptx": false,
+      "interrogaciones": [
+        "I2"
+      ],
+      "path": "content/I2/clases/07-resumen-diseno-de-productos-2025.04.10.md"
+    },
+    {
+      "originalName": "08-mrp-y-planificacion-2025.04.15.pdf",
+      "slug": "08-mrp-y-planificacion-2025.04.15",
+      "title": "08 mrp y planificacion 2025.04.15",
+      "order": 0,
+      "isPdf": true,
+      "isPptx": false,
+      "interrogaciones": [
+        "I2"
+      ],
+      "path": "content/I2/clases/08-mrp-y-planificacion-2025.04.15.pdf"
+    },
+    {
+      "originalName": "08-mrp-y-planificacion-2025.04.16.pdf",
+      "slug": "08-mrp-y-planificacion-2025.04.16",
+      "title": "08 mrp y planificacion 2025.04.16",
+      "order": 0,
+      "isPdf": true,
+      "isPptx": false,
+      "interrogaciones": [
+        "I2"
+      ],
+      "path": "content/I2/clases/08-mrp-y-planificacion-2025.04.16.pdf"
+    },
+    {
+      "originalName": "08-resumen-mrp-y-planificacion-2025.04.15.md",
+      "slug": "08-resumen-mrp-y-planificacion-2025.04.15",
+      "title": "08 resumen mrp y planificacion 2025.04.15",
+      "order": 0,
+      "isPdf": false,
+      "isPptx": false,
+      "interrogaciones": [
+        "I2"
+      ],
+      "path": "content/I2/clases/08-resumen-mrp-y-planificacion-2025.04.15.md"
+    },
+    {
+      "originalName": "08-resumen-mrp-y-planificacion-2025.04.16.md",
+      "slug": "08-resumen-mrp-y-planificacion-2025.04.16",
+      "title": "08 resumen mrp y planificacion 2025.04.16",
+      "order": 0,
+      "isPdf": false,
+      "isPptx": false,
+      "interrogaciones": [
+        "I2"
+      ],
+      "path": "content/I2/clases/08-resumen-mrp-y-planificacion-2025.04.16.md"
+    },
+    {
+      "originalName": "09-proyectos-y-pert-2025.04.22.pdf",
+      "slug": "09-proyectos-y-pert-2025.04.22",
+      "title": "09 proyectos y pert 2025.04.22",
+      "order": 0,
+      "isPdf": true,
+      "isPptx": false,
+      "interrogaciones": [
+        "I2"
+      ],
+      "path": "content/I2/clases/09-proyectos-y-pert-2025.04.22.pdf"
+    },
+    {
+      "originalName": "09-proyectos-y-pert-2025.04.24.pdf",
+      "slug": "09-proyectos-y-pert-2025.04.24",
+      "title": "09 proyectos y pert 2025.04.24",
+      "order": 0,
+      "isPdf": true,
+      "isPptx": false,
+      "interrogaciones": [
+        "I2"
+      ],
+      "path": "content/I2/clases/09-proyectos-y-pert-2025.04.24.pdf"
+    },
+    {
+      "originalName": "09-proyectos-y-pert-2025.05.08.pdf",
+      "slug": "09-proyectos-y-pert-2025.05.08",
+      "title": "09 proyectos y pert 2025.05.08",
+      "order": 0,
+      "isPdf": true,
+      "isPptx": false,
+      "interrogaciones": [
+        "I2"
+      ],
+      "path": "content/I2/clases/09-proyectos-y-pert-2025.05.08.pdf"
+    },
+    {
+      "originalName": "09-resumen-proyectos-y-pert-2025.04.22.md",
+      "slug": "09-resumen-proyectos-y-pert-2025.04.22",
+      "title": "09 resumen proyectos y pert 2025.04.22",
+      "order": 0,
+      "isPdf": false,
+      "isPptx": false,
+      "interrogaciones": [
+        "I2"
+      ],
+      "path": "content/I2/clases/09-resumen-proyectos-y-pert-2025.04.22.md"
+    },
+    {
+      "originalName": "09-resumen-proyectos-y-pert-2025.04.24.md",
+      "slug": "09-resumen-proyectos-y-pert-2025.04.24",
+      "title": "09 resumen proyectos y pert 2025.04.24",
+      "order": 0,
+      "isPdf": false,
+      "isPptx": false,
+      "interrogaciones": [
+        "I2"
+      ],
+      "path": "content/I2/clases/09-resumen-proyectos-y-pert-2025.04.24.md"
+    },
+    {
+      "originalName": "09-resumen-proyectos-y-pert-2025.05.08.md",
+      "slug": "09-resumen-proyectos-y-pert-2025.05.08",
+      "title": "09 resumen proyectos y pert 2025.05.08",
+      "order": 0,
+      "isPdf": false,
+      "isPptx": false,
+      "interrogaciones": [
+        "I2"
+      ],
+      "path": "content/I2/clases/09-resumen-proyectos-y-pert-2025.05.08.md"
+    },
+    {
+      "originalName": "10-resumen-variabilidad-2025.05.08.md",
+      "slug": "10-resumen-variabilidad-2025.05.08",
+      "title": "10 resumen variabilidad 2025.05.08",
+      "order": 0,
+      "isPdf": false,
+      "isPptx": false,
+      "interrogaciones": [
+        "I2"
+      ],
+      "path": "content/I2/clases/10-resumen-variabilidad-2025.05.08.md"
+    },
+    {
+      "originalName": "10-resumen-variabilidad-2025.05.13.md",
+      "slug": "10-resumen-variabilidad-2025.05.13",
+      "title": "10 resumen variabilidad 2025.05.13",
+      "order": 0,
+      "isPdf": false,
+      "isPptx": false,
+      "interrogaciones": [
+        "I2"
+      ],
+      "path": "content/I2/clases/10-resumen-variabilidad-2025.05.13.md"
+    },
+    {
+      "originalName": "10-resumen-variabilidad-2025.05.15.md",
+      "slug": "10-resumen-variabilidad-2025.05.15",
+      "title": "10 resumen variabilidad 2025.05.15",
+      "order": 0,
+      "isPdf": false,
+      "isPptx": false,
+      "interrogaciones": [
+        "I2"
+      ],
+      "path": "content/I2/clases/10-resumen-variabilidad-2025.05.15.md"
+    },
+    {
+      "originalName": "10-variabilidad-2025.05.08.pdf",
+      "slug": "10-variabilidad-2025.05.08",
+      "title": "10 variabilidad 2025.05.08",
+      "order": 0,
+      "isPdf": true,
+      "isPptx": false,
+      "interrogaciones": [
+        "I2"
+      ],
+      "path": "content/I2/clases/10-variabilidad-2025.05.08.pdf"
+    },
+    {
+      "originalName": "10-variabilidad-2025.05.13.pdf",
+      "slug": "10-variabilidad-2025.05.13",
+      "title": "10 variabilidad 2025.05.13",
+      "order": 0,
+      "isPdf": true,
+      "isPptx": false,
+      "interrogaciones": [
+        "I2"
+      ],
+      "path": "content/I2/clases/10-variabilidad-2025.05.13.pdf"
+    },
+    {
+      "originalName": "10-variabilidad-2025.05.15.pdf",
+      "slug": "10-variabilidad-2025.05.15",
+      "title": "10 variabilidad 2025.05.15",
+      "order": 0,
+      "isPdf": true,
+      "isPptx": false,
+      "interrogaciones": [
+        "I2"
+      ],
+      "path": "content/I2/clases/10-variabilidad-2025.05.15.pdf"
+    },
+    {
+      "originalName": "11-centros-de-distribucion-2025.05.20.pdf",
+      "slug": "11-centros-de-distribucion-2025.05.20",
+      "title": "11 centros de distribucion 2025.05.20",
+      "order": 0,
+      "isPdf": true,
+      "isPptx": false,
+      "interrogaciones": [
+        "I2"
+      ],
+      "path": "content/I2/clases/11-centros-de-distribucion-2025.05.20.pdf"
+    },
+    {
+      "originalName": "11-resumen-centros-de-distribucion-2025.05.20.md",
+      "slug": "11-resumen-centros-de-distribucion-2025.05.20",
+      "title": "11 resumen centros de distribucion 2025.05.20",
+      "order": 0,
+      "isPdf": false,
+      "isPptx": false,
+      "interrogaciones": [
+        "I2"
+      ],
+      "path": "content/I2/clases/11-resumen-centros-de-distribucion-2025.05.20.md"
     }
   ],
   "documentos": [
@@ -186,7 +767,24 @@
       "slug": "formulario-i1-2025",
       "title": "formulario i1 2025",
       "order": 0,
-      "isPdf": true
+      "isPdf": true,
+      "isPptx": false,
+      "interrogaciones": [
+        "I1"
+      ],
+      "path": "content/I1/documentos/formulario-i1-2025.pdf"
+    },
+    {
+      "originalName": "formulario_i2_2023_1.pdf",
+      "slug": "formulario_i2_2023_1",
+      "title": "formulario_i2_2023_1",
+      "order": 0,
+      "isPdf": true,
+      "isPptx": false,
+      "interrogaciones": [
+        "I2"
+      ],
+      "path": "content/I2/documentos/formulario_i2_2023_1.pdf"
     }
   ],
   "evaluaciones": [
@@ -195,168 +793,507 @@
       "slug": "i1-ics3213_pauta-2014",
       "title": "i1 ics3213_pauta 2014",
       "order": 0,
-      "isPdf": true
+      "isPdf": true,
+      "isPptx": false,
+      "interrogaciones": [
+        "I1"
+      ],
+      "path": "content/I1/evaluaciones/i1-ics3213_pauta-2014.pdf",
+      "year": "2014"
     },
     {
       "originalName": "i1_2017_pauta-gop-2017.pdf",
       "slug": "i1_2017_pauta-gop-2017",
       "title": "i1_2017_pauta gop 2017",
       "order": 0,
-      "isPdf": true
+      "isPdf": true,
+      "isPptx": false,
+      "interrogaciones": [
+        "I1"
+      ],
+      "path": "content/I1/evaluaciones/i1_2017_pauta-gop-2017.pdf",
+      "year": "2017"
     },
     {
       "originalName": "i1_2018_vfinal_pauta.pdf",
       "slug": "i1_2018_vfinal_pauta",
       "title": "i1_2018_vfinal_pauta",
       "order": 0,
-      "isPdf": true
+      "isPdf": true,
+      "isPptx": false,
+      "interrogaciones": [
+        "I1"
+      ],
+      "path": "content/I1/evaluaciones/i1_2018_vfinal_pauta.pdf",
+      "year": "2018"
     },
     {
       "originalName": "i1_2019_-pauta.pdf",
       "slug": "i1_2019_-pauta",
       "title": "i1_2019_ pauta",
       "order": 0,
-      "isPdf": true
+      "isPdf": true,
+      "isPptx": false,
+      "interrogaciones": [
+        "I1"
+      ],
+      "path": "content/I1/evaluaciones/i1_2019_-pauta.pdf",
+      "year": "2019"
     },
     {
       "originalName": "i1_2020_pauta.pdf",
       "slug": "i1_2020_pauta",
       "title": "i1_2020_pauta",
       "order": 0,
-      "isPdf": true
+      "isPdf": true,
+      "isPptx": false,
+      "interrogaciones": [
+        "I1"
+      ],
+      "path": "content/I1/evaluaciones/i1_2020_pauta.pdf",
+      "year": "2020"
     },
     {
       "originalName": "i1_pauta_2016.pdf",
       "slug": "i1_pauta_2016",
       "title": "i1_pauta_2016",
       "order": 0,
-      "isPdf": true
+      "isPdf": true,
+      "isPptx": false,
+      "interrogaciones": [
+        "I1"
+      ],
+      "path": "content/I1/evaluaciones/i1_pauta_2016.pdf",
+      "year": "2016"
     },
     {
       "originalName": "pauta-2015.pdf",
       "slug": "pauta-2015",
       "title": "pauta 2015",
       "order": 0,
-      "isPdf": true
+      "isPdf": true,
+      "isPptx": false,
+      "interrogaciones": [
+        "I1"
+      ],
+      "path": "content/I1/evaluaciones/pauta-2015.pdf",
+      "year": "2015"
+    },
+    {
+      "originalName": "i2-ics3213_1_2014-1-.pdf",
+      "slug": "i2-ics3213_1_2014-1-",
+      "title": "i2 ics3213_1_2014 1 ",
+      "order": 0,
+      "isPdf": true,
+      "isPptx": false,
+      "interrogaciones": [
+        "I2"
+      ],
+      "path": "content/I2/evaluaciones/i2-ics3213_1_2014-1-.pdf",
+      "year": "2014"
+    },
+    {
+      "originalName": "i2-ics3213_2_2014-1-.pdf",
+      "slug": "i2-ics3213_2_2014-1-",
+      "title": "i2 ics3213_2_2014 1 ",
+      "order": 0,
+      "isPdf": true,
+      "isPptx": false,
+      "interrogaciones": [
+        "I2"
+      ],
+      "path": "content/I2/evaluaciones/i2-ics3213_2_2014-1-.pdf",
+      "year": "2014"
+    },
+    {
+      "originalName": "i2_2017_pauta-1-.pdf",
+      "slug": "i2_2017_pauta-1-",
+      "title": "i2_2017_pauta 1 ",
+      "order": 0,
+      "isPdf": true,
+      "isPptx": false,
+      "interrogaciones": [
+        "I2"
+      ],
+      "path": "content/I2/evaluaciones/i2_2017_pauta-1-.pdf",
+      "year": "2017"
+    },
+    {
+      "originalName": "i2_2018_f_pauta-1-.pdf",
+      "slug": "i2_2018_f_pauta-1-",
+      "title": "i2_2018_f_pauta 1 ",
+      "order": 0,
+      "isPdf": true,
+      "isPptx": false,
+      "interrogaciones": [
+        "I2"
+      ],
+      "path": "content/I2/evaluaciones/i2_2018_f_pauta-1-.pdf",
+      "year": "2018"
+    },
+    {
+      "originalName": "i2_2019_final_pauta.pdf",
+      "slug": "i2_2019_final_pauta",
+      "title": "i2_2019_final_pauta",
+      "order": 0,
+      "isPdf": true,
+      "isPptx": false,
+      "interrogaciones": [
+        "I2"
+      ],
+      "path": "content/I2/evaluaciones/i2_2019_final_pauta.pdf",
+      "year": "2019"
+    },
+    {
+      "originalName": "i2_pauta_2016f-1-.pdf",
+      "slug": "i2_pauta_2016f-1-",
+      "title": "i2_pauta_2016f 1 ",
+      "order": 0,
+      "isPdf": true,
+      "isPptx": false,
+      "interrogaciones": [
+        "I2"
+      ],
+      "path": "content/I2/evaluaciones/i2_pauta_2016f-1-.pdf",
+      "year": "2016"
+    },
+    {
+      "originalName": "pauta_i2-ics3213_1_2013.pdf",
+      "slug": "pauta_i2-ics3213_1_2013",
+      "title": "pauta_i2 ics3213_1_2013",
+      "order": 0,
+      "isPdf": true,
+      "isPptx": false,
+      "interrogaciones": [
+        "I2"
+      ],
+      "path": "content/I2/evaluaciones/pauta_i2-ics3213_1_2013.pdf",
+      "year": "2013"
+    },
+    {
+      "originalName": "pauta_i2_2015-no-oficial-1-.pdf",
+      "slug": "pauta_i2_2015-no-oficial-1-",
+      "title": "pauta_i2_2015 no oficial 1 ",
+      "order": 0,
+      "isPdf": true,
+      "isPptx": false,
+      "interrogaciones": [
+        "I2"
+      ],
+      "path": "content/I2/evaluaciones/pauta_i2_2015-no-oficial-1-.pdf",
+      "year": "2015"
+    },
+    {
+      "originalName": "pauta_i2_2020.pdf",
+      "slug": "pauta_i2_2020",
+      "title": "pauta_i2_2020",
+      "order": 0,
+      "isPdf": true,
+      "isPptx": false,
+      "interrogaciones": [
+        "I2"
+      ],
+      "path": "content/I2/evaluaciones/pauta_i2_2020.pdf",
+      "year": "2020"
     }
   ],
   "guias": [
-    {
-      "originalName": "gu_a_calidad__lean__bodegas_y_cd.pdf",
-      "slug": "gu_a_calidad__lean__bodegas_y_cd",
-      "title": "gu_a_calidad__lean__bodegas_y_cd",
-      "order": 0,
-      "isPdf": true
-    },
-    {
-      "originalName": "gui_a-calidad.pdf",
-      "slug": "gui_a-calidad",
-      "title": "gui_a calidad",
-      "order": 0,
-      "isPdf": true
-    },
-    {
-      "originalName": "guia-bodegas-v2-2-.pdf",
-      "slug": "guia-bodegas-v2-2-",
-      "title": "guia bodegas v2 2 ",
-      "order": 0,
-      "isPdf": true
-    },
-    {
-      "originalName": "guia-pert-localizacion.pdf",
-      "slug": "guia-pert-localizacion",
-      "title": "guia pert localizacion",
-      "order": 0,
-      "isPdf": true
-    },
-    {
-      "originalName": "guia-variabilidad-y-calidad.pdf",
-      "slug": "guia-variabilidad-y-calidad",
-      "title": "guia variabilidad y calidad",
-      "order": 0,
-      "isPdf": true
-    },
     {
       "originalName": "guia_1_procesos_pronstico.pdf",
       "slug": "guia_1_procesos_pronstico",
       "title": "guia_1_procesos_pronstico",
       "order": 0,
-      "isPdf": true
+      "isPdf": true,
+      "isPptx": false,
+      "interrogaciones": [
+        "I1"
+      ],
+      "path": "content/I1/guias/guia_1_procesos_pronstico.pdf"
     },
     {
       "originalName": "guia_2_inventario.pdf",
       "slug": "guia_2_inventario",
       "title": "guia_2_inventario",
       "order": 0,
-      "isPdf": true
+      "isPdf": true,
+      "isPptx": false,
+      "interrogaciones": [
+        "I1"
+      ],
+      "path": "content/I1/guias/guia_2_inventario.pdf"
+    },
+    {
+      "originalName": "gu_a_calidad__lean__bodegas_y_cd.pdf",
+      "slug": "gu_a_calidad__lean__bodegas_y_cd",
+      "title": "gu_a_calidad__lean__bodegas_y_cd",
+      "order": 0,
+      "isPdf": true,
+      "isPptx": false,
+      "interrogaciones": [
+        "I2"
+      ],
+      "path": "content/I2/guias/gu_a_calidad__lean__bodegas_y_cd.pdf"
+    },
+    {
+      "originalName": "gui_a-calidad.pdf",
+      "slug": "gui_a-calidad",
+      "title": "gui_a calidad",
+      "order": 0,
+      "isPdf": true,
+      "isPptx": false,
+      "interrogaciones": [
+        "I2"
+      ],
+      "path": "content/I2/guias/gui_a-calidad.pdf"
+    },
+    {
+      "originalName": "guia-bodegas-v2-2-.pdf",
+      "slug": "guia-bodegas-v2-2-",
+      "title": "guia bodegas v2 2 ",
+      "order": 0,
+      "isPdf": true,
+      "isPptx": false,
+      "interrogaciones": [
+        "I2"
+      ],
+      "path": "content/I2/guias/guia-bodegas-v2-2-.pdf"
+    },
+    {
+      "originalName": "guia-pert-localizacion.pdf",
+      "slug": "guia-pert-localizacion",
+      "title": "guia pert localizacion",
+      "order": 0,
+      "isPdf": true,
+      "isPptx": false,
+      "interrogaciones": [
+        "I2"
+      ],
+      "path": "content/I2/guias/guia-pert-localizacion.pdf"
+    },
+    {
+      "originalName": "guia-variabilidad-y-calidad.pdf",
+      "slug": "guia-variabilidad-y-calidad",
+      "title": "guia variabilidad y calidad",
+      "order": 0,
+      "isPdf": true,
+      "isPptx": false,
+      "interrogaciones": [
+        "I2"
+      ],
+      "path": "content/I2/guias/guia-variabilidad-y-calidad.pdf"
     },
     {
       "originalName": "guia_localizacion.pdf",
       "slug": "guia_localizacion",
       "title": "guia_localizacion",
       "order": 0,
-      "isPdf": true
+      "isPdf": true,
+      "isPptx": false,
+      "interrogaciones": [
+        "I2"
+      ],
+      "path": "content/I2/guias/guia_localizacion.pdf"
     },
     {
       "originalName": "guia_pert.pdf",
       "slug": "guia_pert",
       "title": "guia_pert",
       "order": 0,
-      "isPdf": true
+      "isPdf": true,
+      "isPptx": false,
+      "interrogaciones": [
+        "I2"
+      ],
+      "path": "content/I2/guias/guia_pert.pdf"
     },
     {
       "originalName": "guia_planificacion_2018.pdf",
       "slug": "guia_planificacion_2018",
       "title": "guia_planificacion_2018",
       "order": 0,
-      "isPdf": true
+      "isPdf": true,
+      "isPptx": false,
+      "interrogaciones": [
+        "I2"
+      ],
+      "path": "content/I2/guias/guia_planificacion_2018.pdf"
     },
     {
       "originalName": "guia_variabilidad.pdf",
       "slug": "guia_variabilidad",
       "title": "guia_variabilidad",
       "order": 0,
-      "isPdf": true
+      "isPdf": true,
+      "isPptx": false,
+      "interrogaciones": [
+        "I2"
+      ],
+      "path": "content/I2/guias/guia_variabilidad.pdf"
     }
   ],
   "otros": [
     {
+      "originalName": "otros-analisis-la-meta-cap-1-15.md",
+      "slug": "otros-analisis-la-meta-cap-1-15",
+      "title": "analisis la meta cap 1 15",
+      "order": 0,
+      "isPdf": false,
+      "isPptx": false,
+      "interrogaciones": [
+        "I1"
+      ],
+      "path": "content/I1/otros/otros-analisis-la-meta-cap-1-15.md"
+    },
+    {
+      "originalName": "analisis-juego-cerveza.md",
+      "slug": "analisis-juego-cerveza",
+      "title": "analisis juego cerveza",
+      "order": 0,
+      "isPdf": false,
+      "isPptx": false,
+      "interrogaciones": [
+        "I2"
+      ],
+      "path": "content/I2/otros/analisis-juego-cerveza.md"
+    },
+    {
+      "originalName": "analisis-la-meta-cap-16-26.md",
+      "slug": "analisis-la-meta-cap-16-26",
+      "title": "analisis la meta cap 16 26",
+      "order": 0,
+      "isPdf": false,
+      "isPptx": false,
+      "interrogaciones": [
+        "I2"
+      ],
+      "path": "content/I2/otros/analisis-la-meta-cap-16-26.md"
+    },
+    {
       "originalName": "otros-notas-la-meta-by-ivan-.pdf",
       "slug": "otros-notas-la-meta-by-ivan-",
-      "title": "otros notas la meta by ivan ",
+      "title": "notas la meta by ivan ",
       "order": 0,
-      "isPdf": true
+      "isPdf": true,
+      "isPptx": false,
+      "interrogaciones": [
+        "TODAS"
+      ],
+      "path": "content/otros/otros-notas-la-meta-by-ivan-.pdf"
     },
     {
       "originalName": "otros-resumen-casos-gop-1.pdf",
       "slug": "otros-resumen-casos-gop-1",
-      "title": "otros resumen casos gop 1",
+      "title": "resumen casos gop 1",
       "order": 0,
-      "isPdf": true
+      "isPdf": true,
+      "isPptx": false,
+      "interrogaciones": [
+        "TODAS"
+      ],
+      "path": "content/otros/otros-resumen-casos-gop-1.pdf"
     },
     {
       "originalName": "otros-resumen-casos-gop-2.pdf",
       "slug": "otros-resumen-casos-gop-2",
-      "title": "otros resumen casos gop 2",
+      "title": "resumen casos gop 2",
       "order": 0,
-      "isPdf": true
+      "isPdf": true,
+      "isPptx": false,
+      "interrogaciones": [
+        "TODAS"
+      ],
+      "path": "content/otros/otros-resumen-casos-gop-2.pdf"
+    },
+    {
+      "originalName": "otros-resumen-la-meta-by-best-books.md",
+      "slug": "otros-resumen-la-meta-by-best-books",
+      "title": "resumen la meta by best books",
+      "order": 0,
+      "isPdf": false,
+      "isPptx": false,
+      "interrogaciones": [
+        "TODAS"
+      ],
+      "path": "content/otros/otros-resumen-la-meta-by-best-books.md"
     },
     {
       "originalName": "otros-resumen-la-meta.pdf",
       "slug": "otros-resumen-la-meta",
-      "title": "otros resumen la meta",
+      "title": "resumen la meta",
       "order": 0,
-      "isPdf": true
+      "isPdf": true,
+      "isPptx": false,
+      "interrogaciones": [
+        "TODAS"
+      ],
+      "path": "content/otros/otros-resumen-la-meta.pdf"
     }
   ],
   "anuncios": [
+    {
+      "originalName": "2025-05-21-temario-i2.md",
+      "slug": "2025-05-21-temario-i2",
+      "title": "temario i2",
+      "order": -1747785600000,
+      "isPdf": false,
+      "isPptx": false,
+      "interrogaciones": [
+        "TODAS"
+      ],
+      "path": "content/anuncios/2025-05-21-temario-i2.md",
+      "date": "2025-05-21"
+    },
+    {
+      "originalName": "2025-05-13-detalles-i2.md",
+      "slug": "2025-05-13-detalles-i2",
+      "title": "detalles i2",
+      "order": -1747094400000,
+      "isPdf": false,
+      "isPptx": false,
+      "interrogaciones": [
+        "TODAS"
+      ],
+      "path": "content/anuncios/2025-05-13-detalles-i2.md",
+      "date": "2025-05-13"
+    },
     {
       "originalName": "2025-03-29-temario-i1.md",
       "slug": "2025-03-29-temario-i1",
       "title": "temario i1",
       "order": -1743206400000,
       "isPdf": false,
+      "isPptx": false,
+      "interrogaciones": [
+        "TODAS"
+      ],
+      "path": "content/anuncios/2025-03-29-temario-i1.md",
       "date": "2025-03-29"
+    }
+  ],
+  "tareas": [
+    {
+      "originalName": "ICS3213_T1_2025.pdf",
+      "slug": "ics3213_t1_2025",
+      "title": "ICS3213_T1_2025",
+      "order": 0,
+      "isPdf": true,
+      "isPptx": false,
+      "interrogaciones": [
+        "I1"
+      ],
+      "path": "content/I1/tareas/ICS3213_T1_2025.pdf"
+    },
+    {
+      "originalName": "ICS3213_T2_2025.pdf",
+      "slug": "ics3213_t2_2025",
+      "title": "ICS3213_T2_2025",
+      "order": 0,
+      "isPdf": true,
+      "isPptx": false,
+      "interrogaciones": [
+        "I2"
+      ],
+      "path": "content/I2/tareas/ICS3213_T2_2025.pdf"
     }
   ]
 }

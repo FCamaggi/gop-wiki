@@ -7,14 +7,14 @@ import MarkdownContent from './MarkdownContent';
 const NavigationHeader = () => (
   <nav className="bg-slate-100 border-b border-slate-200 py-4">
     <div className="max-w-7xl mx-auto px-4">
-      <div className="flex items-center space-x-6 overflow-x-auto">
-        {[
+      <div className="flex items-center space-x-6 overflow-x-auto">          {[
           { path: 'ayudantias', label: 'Ayudantías' },
           { path: 'casos', label: 'Casos' },
           { path: 'clases', label: 'Clases' },
           { path: 'documentos', label: 'Documentos' },
           { path: 'evaluaciones', label: 'Evaluaciones' },
           { path: 'guias', label: 'Guías' },
+          { path: 'tareas', label: 'Tareas' },
           { path: 'otros', label: 'Otros' },
         ].map(({ path, label }) => (
           <Link

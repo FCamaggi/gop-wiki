@@ -14,6 +14,7 @@ const sections = [
   { path: 'documentos', label: 'Documentos' },
   { path: 'evaluaciones', label: 'Evaluaciones' },
   { path: 'guias', label: 'Guías' },
+  { path: 'tareas', label: 'Tareas' },
   { path: 'otros', label: 'Otros' },
   { path: 'anuncios', label: 'Anuncios' },
 ];

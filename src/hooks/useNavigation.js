@@ -7,6 +7,7 @@ const useNavigation = () => {
         tests: [],
         others: [],
     });
+    const [selectedInterrogaciones, setSelectedInterrogaciones] = useState(['TODAS']);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
@@ -41,7 +42,30 @@ const useNavigation = () => {
         loadTableOfContents();
     }, []);
 
-    return { tableOfContents, loading, error };
+    // Filtrar contenido basado en las interrogaciones seleccionadas
+    const filteredTableOfContents = Object.keys(tableOfContents).reduce((acc, section) => {
+        if (selectedInterrogaciones.includes('TODAS')) {
+            // Si se selecciona "TODAS", mostrar todos los elementos
+            acc[section] = tableOfContents[section];
+        } else {
+            // Filtrar elementos que coincidan con al menos una de las interrogaciones seleccionadas
+            acc[section] = tableOfContents[section].filter((item) => {
+                return item.interrogaciones && 
+                       (item.interrogaciones.some(i => selectedInterrogaciones.includes(i)) ||
+                        item.interrogaciones.includes('TODAS'));
+            });
+        }
+        return acc;
+    }, {});
+
+    return { 
+        tableOfContents: filteredTableOfContents, 
+        allContents: tableOfContents,
+        selectedInterrogaciones,
+        setSelectedInterrogaciones,
+        loading, 
+        error 
+    };
 };
 
 export default useNavigation;

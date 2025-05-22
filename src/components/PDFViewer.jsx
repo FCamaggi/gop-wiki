@@ -1,47 +1,95 @@
+import { useState } from 'react';
+import { Document, Page, pdfjs } from 'react-pdf';
 import PropTypes from 'prop-types';
 
-const PDFViewer = ({ url, title = 'PDF Document' }) => {
-  // Verificar que la URL sea válida
-  if (!url) {
-    return (
-      <div className="text-center text-red-600 p-4">
-        <p>Error: URL del PDF no válida</p>
-      </div>
-    );
-  }
+// Configuración del worker desde CDN
+pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.js`;
+
+const PDFViewer = ({ path }) => {
+  const [numPages, setNumPages] = useState(null);
+  const [pageNumber, setPageNumber] = useState(1);
+  const [scale, setScale] = useState(1.0);
+
+  const onDocumentLoadSuccess = ({ numPages }) => {
+    setNumPages(numPages);
+  };
+
+  // Simplificar el manejo de rutas
+  const getFileUrl = () => {
+    // Remover cualquier /content/ inicial para evitar duplicación
+    const cleanPath = path.replace(/^\/?(content\/)+/, '');
+    // Asegurar que la ruta comience con /content/
+    return `/content/${cleanPath}`;
+  };
+
+  console.log('PDF path:', { original: path, processed: getFileUrl() });
 
   return (
-    <div className="w-full bg-slate-100 rounded-lg p-4">
-      <div className="aspect-[4/3] w-full h-full relative">
-        <object
-          data={url}
-          type="application/pdf"
-          title={title}
-          aria-label={title}
-          className="absolute inset-0 w-full h-full"
-        >
-          <div className="flex flex-col items-center justify-center h-full bg-white rounded-lg border border-slate-200 p-4">
-            <p className="text-slate-600 mb-4">
-              El visor de PDF no está disponible en tu navegador.
-            </p>
-            <a
-              href={url}
-              download
-              className="px-4 py-2 bg-slate-800 text-white rounded-lg hover:bg-slate-700 transition-colors"
-              aria-label={`Descargar ${title}`}
+    <div className="flex flex-col items-center w-full max-w-6xl mx-auto">
+      <Document
+        file={getFileUrl()}
+        onLoadSuccess={onDocumentLoadSuccess}
+        loading={<div>Cargando PDF...</div>}
+        error={<div>Error al cargar el PDF. Por favor intente nuevamente.</div>}
+      >
+        <Page
+          pageNumber={pageNumber}
+          scale={scale}
+          className="page border shadow-lg"
+        />
+      </Document>
+
+      {numPages && (
+        <div className="flex flex-col items-center gap-4 my-4">
+          <div className="flex items-center gap-4">
+            <button
+              onClick={() => setPageNumber((prev) => Math.max(prev - 1, 1))}
+              disabled={pageNumber <= 1}
+              className="px-4 py-2 text-sm bg-blue-500 text-white rounded hover:bg-blue-600 disabled:bg-gray-300"
             >
-              Descargar PDF
-            </a>
+              Anterior
+            </button>
+
+            <span className="text-sm">
+              Página {pageNumber} de {numPages}
+            </span>
+
+            <button
+              onClick={() =>
+                setPageNumber((prev) => Math.min(prev + 1, numPages))
+              }
+              disabled={pageNumber >= numPages}
+              className="px-4 py-2 text-sm bg-blue-500 text-white rounded hover:bg-blue-600 disabled:bg-gray-300"
+            >
+              Siguiente
+            </button>
           </div>
-        </object>
-      </div>
+
+          <div className="flex items-center gap-4">
+            <button
+              onClick={() => setScale((prev) => Math.max(prev - 0.1, 0.5))}
+              className="px-4 py-2 text-sm bg-gray-200 rounded hover:bg-gray-300"
+            >
+              -
+            </button>
+
+            <span className="text-sm">Zoom: {Math.round(scale * 100)}%</span>
+
+            <button
+              onClick={() => setScale((prev) => Math.min(prev + 0.1, 2))}
+              className="px-4 py-2 text-sm bg-gray-200 rounded hover:bg-gray-300"
+            >
+              +
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
 
 PDFViewer.propTypes = {
-  url: PropTypes.string.isRequired,
-  title: PropTypes.string,
+  path: PropTypes.string.isRequired,
 };
 
 export default PDFViewer;

@@ -19,6 +19,8 @@ const MarkdownContent = ({ content, currentPage = null }) => {
       ? 'evaluaciones'
       : currentPage.slug.toLowerCase().startsWith('otros')
       ? 'otros'
+      : currentPage.slug.toLowerCase().startsWith('tarea')
+      ? 'tareas'
       : 'clases';
 
     return (

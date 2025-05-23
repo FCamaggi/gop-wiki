@@ -1,0 +1,49 @@
+react-dom.development.js:11099 
+ Uncaught NotFoundError: Failed to execute 'removeChild' on 'Node': The node to be removed is not a child of this node.
+    at removeChild (react-dom.development.js:11099:18)
+    at commitDeletionEffectsOnFiber (react-dom.development.js:24067:15)
+    at commitDeletionEffects (react-dom.development.js:24015:5)
+    at recursivelyTraverseMutationEffects (react-dom.development.js:24298:9)
+    at commitMutationEffectsOnFiber (react-dom.development.js:24385:9)
+    at recursivelyTraverseMutationEffects (react-dom.development.js:24312:7)
+    at commitMutationEffectsOnFiber (react-dom.development.js:24385:9)
+    at recursivelyTraverseMutationEffects (react-dom.development.js:24312:7)
+    at commitMutationEffectsOnFiber (react-dom.development.js:24332:9)
+    at recursivelyTraverseMutationEffects (react-dom.development.js:24312:7)
+react-dom.development.js:18704 
+ The above error occurred in the <div> component:
+
+    at div
+    at div
+    at div
+    at MermaidDiagram (http://localhost:5173/src/components/MermaidDiagram.jsx:53:27)
+    at code (http://localhost:5173/src/components/MarkdownContent.jsx:65:14)
+    at pre
+    at Markdown (http://localhost:5173/node_modules/.vite/deps/react-markdown.js?v=b0d7402e:5309:35)
+    at div
+    at MarkdownContent (http://localhost:5173/src/components/MarkdownContent.jsx:26:28)
+    at div
+    at main
+    at div
+    at div
+    at DocumentationLayout (http://localhost:5173/src/components/DocumentationLayout.jsx:27:32)
+    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=b0d7402e:4069:5)
+    at Routes (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=b0d7402e:4539:5)
+    at Router (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=b0d7402e:4482:15)
+    at BrowserRouter (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=b0d7402e:5228:5)
+    at App
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+react-dom.development.js:11099 
+ Uncaught NotFoundError: Failed to execute 'removeChild' on 'Node': The node to be removed is not a child of this node.
+    at removeChild (react-dom.development.js:11099:18)
+    at commitDeletionEffectsOnFiber (react-dom.development.js:24067:15)
+    at commitDeletionEffects (react-dom.development.js:24015:5)
+    at recursivelyTraverseMutationEffects (react-dom.development.js:24298:9)
+    at commitMutationEffectsOnFiber (react-dom.development.js:24385:9)
+    at recursivelyTraverseMutationEffects (react-dom.development.js:24312:7)
+    at commitMutationEffectsOnFiber (react-dom.development.js:24385:9)
+    at recursivelyTraverseMutationEffects (react-dom.development.js:24312:7)
+    at commitMutationEffectsOnFiber (react-dom.development.js:24332:9)
+    at recursivelyTraverseMutationEffects (react-dom.development.js:24312:7)

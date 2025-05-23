@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom';
 import DocumentationLayout from './components/DocumentationLayout';
 import AnnouncementsPage from './components/AnnouncementsPage';
+import ErrorBoundary from './components/ErrorBoundary';
 
 const sections = [
   { path: 'ayudantias', label: 'Ayudantías' },
@@ -20,24 +21,26 @@ const sections = [
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        {/* Página principal de anuncios */}
-        <Route path="/" element={<AnnouncementsPage />} />
+    <ErrorBoundary>
+      <Router>
+        <Routes>
+          {/* Página principal de anuncios */}
+          <Route path="/" element={<AnnouncementsPage />} />
 
-        {/* Rutas de secciones */}
-        {sections.map(({ path }) => (
-          <Route
-            key={path}
-            path={`/${path}/*`}
-            element={<DocumentationLayout defaultSection={path} />}
-          />
-        ))}
+          {/* Rutas de secciones */}
+          {sections.map(({ path }) => (
+            <Route
+              key={path}
+              path={`/${path}/*`}
+              element={<DocumentationLayout defaultSection={path} />}
+            />
+          ))}
 
-        {/* Ruta de redirección por defecto */}
-        <Route path="*" element={<Navigate to="/" replace />} />
-      </Routes>
-    </Router>
+          {/* Ruta de redirección por defecto */}
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </Router>
+    </ErrorBoundary>
   );
 }
 
